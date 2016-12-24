@@ -9,5 +9,18 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <TextBlock  x:Name="User"  Text="Unregistered"/>
+        <TextBlock  x:Name="Pass"  Text="Unregistered"/>       
+        
+
+        <Button HorizontalAlignment="Center" Height="50" Width="150" Click="Button_Click" >Register</Button>
+        <Button HorizontalAlignment="Right"    Height="50" Width="150" Margin="150" Click="Button_Click_1" >Unregister </Button>
+        
+        
+
+       
+
+
+
     </Grid>
 </Page>
