@@ -45,6 +45,7 @@ namespace Volsbb_Onetouch
 
             BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, true, null);
             BackgroundTaskHelper.Register("ToastBackgroundTask", "Tasks.ToastBackgroundTask", new ToastNotificationActionTrigger(), false,false, null);
+     
 
 
 
@@ -54,6 +55,7 @@ namespace Volsbb_Onetouch
         {
             BackgroundTaskHelper.Unregister("SampleBackgroundTask");
             BackgroundTaskHelper.Unregister("ToastBackgroundTask");
+            BackgroundTaskHelper.Unregister("TileBackgroundTask");
         }
     }
 }

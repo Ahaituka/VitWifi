@@ -8,19 +8,33 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TextBlock  x:Name="User"  Text="Unregistered"/>
-        <TextBlock  x:Name="Pass"  Text="Unregistered"/>       
-        
+        <Viewbox >
+            <TextBlock Text="VOLSBB">          
+                
+            </TextBlock>
+            
+        </Viewbox >
 
-        <Button HorizontalAlignment="Center" Height="50" Width="150" Click="Button_Click" >Register</Button>
-        <Button HorizontalAlignment="Right"    Height="50" Width="150" Margin="150" Click="Button_Click_1" >Unregister </Button>
-        
-        
+        <Viewbox Grid.Row="1" Margin="20">
+            <StackPanel  Orientation="Vertical" Grid.Row="1">
+                <TextBox  x:Name="User" Margin="10" Width="250" HorizontalAlignment="Center" PlaceholderText="UserName"/>
+                <PasswordBox  x:Name="Pass"  Width="250"  HorizontalAlignment="Center" PlaceholderText="Password"/>
+            </StackPanel>
+        </Viewbox>
 
-       
-
-
+        <Viewbox Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Button HorizontalAlignment="Left" Width="150"   Click="Button_Click" Margin="10" >Register</Button>
+                <Button HorizontalAlignment="Left" Width="150"   Click="Button_Click"  Margin="10" >Login</Button>
+                <Button HorizontalAlignment="Right" Width="150"    Click="Button_Click_1" Margin="10" >Logout</Button>
+            </StackPanel>
+        </Viewbox>
 
     </Grid>
 </Page>

@@ -1,0 +1,119 @@
+<Page x:Class="VOLSBB.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Behaviors="using:Template10.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:VOLSBB.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:VOLSBB.ViewModels"
+      mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <!--<VisualStateMnager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        --><!--  TODO: change properties for narrow view  --><!--
+                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        --><!--  TODO: change properties for normal view  --><!--
+                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        --><!--  TODO: change properties for wide view  --><!--
+                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateMnager.VisualStateGroups>-->
+
+        <controls:PageHeader x:Name="pageHeader"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True"
+                             Text="Main Page">
+
+            <!--  secondary commands  -->
+            <controls:PageHeader.SecondaryCommands>
+                <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
+                <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
+                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
+            </controls:PageHeader.SecondaryCommands>
+
+        </controls:PageHeader>
+
+        <RelativePanel EntranceNavigationTransitionInfo.IsTargetElement="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.Below="pageHeader"/>
+
+
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            
+            <!--<StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
+                <TextBlock Text="Background Task" VerticalAlignment="Center"/>
+                <Button x:Name="EnableButton" Click="Enable" Margin="4" VerticalAlignment="Center">Enable</Button>
+                <Button x:Name="DisableButton" Click="Disable" Margin="4" VerticalAlignment="Center">Disable</Button>
+            </StackPanel>-->
+
+
+            <Viewbox >
+                <TextBlock Text="VOLSBB">
+
+                </TextBlock>
+                
+
+            </Viewbox >
+            
+
+            <Viewbox Grid.Row="1" Margin="20">
+                <StackPanel  Orientation="Vertical" Grid.Row="1">
+                    <TextBox  x:Name="User" Margin="10" Width="250" HorizontalAlignment="Center" PlaceholderText="UserName"/>
+                    <PasswordBox  x:Name="Pass"  Width="250"  HorizontalAlignment="Center" PlaceholderText="Password"/>
+                </StackPanel>
+            </Viewbox>
+
+            <Viewbox Grid.Row="2">
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <Button HorizontalAlignment="Left" Width="150"   x:Name="register" Click="Register" Margin="10" >Register</Button>
+                    <Button HorizontalAlignment="Left" Width="150"   x:Name="LoginButton" Click="Login"  Margin="10" >Login</Button>
+                    <Button HorizontalAlignment="Right" Width="150"  x:Name="LogoutButton"  Click="Logout" Margin="10" >Logout</Button>
+                   
+
+                </StackPanel>
+            </Viewbox>
+
+        </Grid>
+
+    </RelativePanel>
+</Page>
+

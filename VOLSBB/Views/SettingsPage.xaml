@@ -1,0 +1,334 @@
+<Page x:Class="VOLSBB.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Behaviors="using:Template10.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:converter="using:Template10.Converters"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:VOLSBB.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:VOLSBB.ViewModels"
+      mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:SettingsPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <Page.Resources>
+        <converter:ValueWhenConverter x:Name="FalseWhenTrueConverter">
+            <converter:ValueWhenConverter.When>
+                <x:Boolean>True</x:Boolean>
+            </converter:ValueWhenConverter.When>
+            <converter:ValueWhenConverter.Value>
+                <x:Boolean>False</x:Boolean>
+            </converter:ValueWhenConverter.Value>
+            <converter:ValueWhenConverter.Otherwise>
+                <x:Boolean>True</x:Boolean>
+            </converter:ValueWhenConverter.Otherwise>
+        </converter:ValueWhenConverter>
+    </Page.Resources>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!--  header  -->
+        <controls:PageHeader x:Name="pageHeader"
+                             Content="Settings Page"
+                             Frame="{x:Bind Frame}"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" />
+
+        <!--  content  -->
+        <Pivot x:Name="MyPivot"
+               Grid.Row="1"
+               EntranceNavigationTransitionInfo.IsTargetElement="True"
+               RelativePanel.AlignBottomWithPanel="True"
+               RelativePanel.AlignLeftWithPanel="True"
+               RelativePanel.AlignRightWithPanel="True"
+               RelativePanel.Below="pageHeader">
+
+            <!--  settings  -->
+            <PivotItem DataContext="{Binding SettingsPartViewModel}" Header="Settings">
+                <ScrollViewer Margin="0,12,-12,0"
+                              HorizontalContentAlignment="Left"
+                              VerticalScrollBarVisibility="Auto">
+                    <RelativePanel HorizontalAlignment="Left">
+
+                        <ToggleSwitch x:Name="UseShellDrawnBackButtonToggleSwtich"
+                                      Header="Shell-drawn Back Button"
+                                      IsOn="{Binding UseShellBackButton, Mode=TwoWay}"
+                                      OffContent="Back button is in Page Header"
+                                      OnContent="Back button in Title/TaskBar"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.AlignTopWithPanel="True" />
+
+                        <ToggleSwitch x:Name="UseLightThemeToggleSwitch"
+                                      Header="Requested Application Theme"
+                                      IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
+                                      OffContent="Current theme is Dark"
+                                      OnContent="Current theme is Light"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />
+
+                        <ToggleSwitch x:Name="ShowHamburgerButtonToggleSwitch"
+                                      Header="Hamburger Button Visibility"
+                                      IsEnabled="{Binding IsOn, ElementName=IsFullScreenToggleSwitch, Converter={StaticResource FalseWhenTrueConverter}}"
+                                      IsOn="{Binding ShowHamburgerButton, Mode=TwoWay}"
+                                      OffContent="Hamburger Button is hidden"
+                                      OnContent="Hamburger Button is visible"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="UseLightThemeToggleSwitch" />
+
+                        <ToggleSwitch x:Name="IsFullScreenToggleSwitch"
+                                      Header="Page content is Full Screen"
+                                      IsOn="{Binding IsFullScreen, Mode=TwoWay}"
+                                      OffContent="Hamburger Menu is visible"
+                                      OnContent="Hamburger Menu is hidden"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="ShowHamburgerButtonToggleSwitch" />
+
+                        <!--<TextBox x:Name="BusyTextTextBox"
+                                 Width="200"
+                                 Margin="0,12,0,0"
+                                 HorizontalAlignment="Left"
+                                 Header="Busy text"
+                                 RelativePanel.AlignLeftWithPanel="True"
+                                 RelativePanel.Below="IsFullScreenToggleSwitch"
+                                 Text="{Binding BusyText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Button Margin="12,0,0,0"
+                                Command="{x:Bind ViewModel.SettingsPartViewModel.ShowBusyCommand}"
+                                Content="Show Busy"
+                                RelativePanel.AlignBottomWith="BusyTextTextBox"
+                                RelativePanel.RightOf="BusyTextTextBox" />-->
+
+                    </RelativePanel>
+
+                </ScrollViewer>
+            </PivotItem>
+
+            <!--  privacy  -->
+            <PivotItem DataContext="{Binding SettingsPartViewModel}"
+                       Header="Developers"
+                       Padding="0">
+                <StackPanel Margin="10,10,0,0" Name="bitloks">
+                    <RelativePanel>
+                        <TextBlock x:Name="DeveloperTextBlock"
+                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                       Text="App developed by:" />
+
+                        <StackPanel x:Name="Shubham" RelativePanel.Below="DeveloperTextBlock">
+
+                            <TextBlock x:Name="shubh"
+                                           Margin="0,0,0,0"
+                                           FontWeight="Normal"
+                                           Foreground="LightGray"
+                                           Style="{StaticResource SubheaderTextBlockStyle}"
+                                           Text="Shubham Jain" />
+                            <StackPanel Orientation="Horizontal">
+
+                                <HyperlinkButton Width="50"
+                                                     Height="50"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     NavigateUri="https://github.com/bitloks"
+                                                    >
+                                    <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                </HyperlinkButton>
+                                <HyperlinkButton Width="50"
+                                                     Height="50"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     NavigateUri="https://www.instagram.com/bitloks/"
+                                                    >
+                                    <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                </HyperlinkButton>
+                            </StackPanel>
+                      </StackPanel>                  
+                    </RelativePanel>
+                    <RelativePanel>
+                        <TextBlock x:Name="InspiredTextBlock"
+                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                       Text="App inspired by:" />
+
+                        <StackPanel x:Name="Namit" RelativePanel.Below="InspiredTextBlock">
+
+                            <TextBlock x:Name="namit"
+                                           Margin="0,0,0,0"
+                                           FontWeight="Normal"
+                                           Foreground="LightGray"
+                                           Style="{StaticResource SubheaderTextBlockStyle}"
+                                           Text="Namit Juneja (Bash script) " />
+                            <StackPanel Orientation="Horizontal">
+
+                                <HyperlinkButton Width="50"
+                                                     Height="50"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     NavigateUri="https://github.com/namitjuneja/volsbb-autologin"
+                                                    >
+                                    <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                </HyperlinkButton>
+                               
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel x:Name="Prince" RelativePanel.Below="Namit">
+
+                            <TextBlock x:Name="prince"
+                                           Margin="0,0,0,0"
+                                           FontWeight="Normal"
+                                           Foreground="LightGray"
+                                           Style="{StaticResource SubheaderTextBlockStyle}"
+                                           Text="Prince Bansal (Volsbb Onetouch) " />
+                            <StackPanel Orientation="Horizontal">
+
+                                <HyperlinkButton Width="50"
+                                                     Height="50"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     NavigateUri="https://github.com/princebansal/volsbb-onetouch"
+                                                    >
+                                    <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                </HyperlinkButton>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </RelativePanel>
+                    <RelativePanel>
+                        <TextBlock x:Name="MentorTextBlock"
+                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                       Text="Mentor:" />
+
+                        <StackPanel x:Name="Vinay" RelativePanel.Below="MentorTextBlock">
+
+                            <TextBlock x:Name="vinay"
+                                           Margin="0,0,0,0"
+                                           FontWeight="Normal"
+                                           Foreground="LightGray"
+                                           Style="{StaticResource SubheaderTextBlockStyle}"
+                                           Text="Vinay Gupta " />
+                            <StackPanel Orientation="Horizontal">
+
+                                <HyperlinkButton Width="50"
+                                                     Height="50"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     NavigateUri="https://github.com/VinayGupta23"
+                                                    >
+                                    <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                </HyperlinkButton>
+
+                            </StackPanel>
+                        </StackPanel>
+                       
+                    </RelativePanel>
+                </StackPanel>
+                
+            </PivotItem>
+
+            <!--  about  -->
+            <PivotItem Header="About">
+
+                <TextBlock  FontSize="25" FontFamily="Arial" TextWrapping="Wrap">
+                    <Run 
+                        >
+                    
+                    VitWifi  is a simple UWP app that will work on any device running windows 10 whether the device is a  pc,phone or tablets.This app is specifically made for  the students of vit university to ease the process  having acces to  Intenet when  connected  to Vit's Wifi Network.It automatically pass your credentials to pronto server.
+                    </Run>
+                    
+                    <LineBreak></LineBreak>
+                    <Run FontWeight="ExtraBold"  Text="Features">  </Run>
+                    
+                   <LineBreak></LineBreak> 
+                     • Auto Login
+                    <LineBreak></LineBreak> 
+                    •  Data Usage Live Tiles
+                    <LineBreak></LineBreak> 
+                     • Get notification when your data usage reach 7gb
+                    <LineBreak></LineBreak> 
+                     • Say Hey Cortana Wifi Login to login
+                     <LineBreak></LineBreak> 
+                     • Say Hey Cortana Wifi usage to check your data usage
+                      <LineBreak></LineBreak> 
+                     • Say Hey Cortana Logout to Logout
+                
+             
+                </TextBlock>
+
+                <!--<RelativePanel DataContext="{Binding AboutPartViewModel}">
+
+                    <Border x:Name="LogoImage"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            BorderBrush="DimGray"
+                            BorderThickness="1"
+                            IsHitTestVisible="False"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignTopWithPanel="True">
+                        <Border.Background>
+                            <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
+                        </Border.Background>
+                        <Image Margin="12"
+                               Source="{Binding Logo}"
+                               Stretch="None" />
+                    </Border>
+
+                    <TextBlock x:Name="DisplayNameTextBlock"
+                               Margin="0,0,0,12"
+                               FontSize="24"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignRightWith="LogoImage"
+                               RelativePanel.AlignTopWithPanel="True"
+                               Text="{Binding DisplayName}" />
+
+                    <TextBlock x:Name="PublisherTextBlock"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.Below="DisplayNameTextBlock"
+                               Text="{Binding Publisher}" />
+
+                    <TextBlock x:Name="VersionTextBlock"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.Below="PublisherTextBlock">
+                        <Run>Version</Run>
+                        <Run Text="{Binding Version}" />
+                    </TextBlock>
+
+                </RelativePanel>-->
+            </PivotItem>
+        </Pivot>
+
+    </RelativePanel>
+
+</Page>
+
