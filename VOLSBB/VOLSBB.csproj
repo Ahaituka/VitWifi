@@ -130,6 +130,7 @@
     <Content Include="Assets\git2.png" />
     <Content Include="Assets\instagram.png" />
     <Content Include="Help.htm" />
+    <Content Include="HomeControlCommands.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -184,13 +185,28 @@
       <Project>{0750f780-d497-45ef-96b4-abdc0e71a618}</Project>
       <Name>Tasks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\Downloads\BackgroundTimerLiveTile-master\BackgroundTimerLiveTile-master\BackgroundTileTimer\BackgroundTileTimerTask\BackgroundTileTimerTask.csproj">
+    <ProjectReference Include="..\BackgroundTileTimerTask\BackgroundTileTimerTask.csproj">
       <Project>{9108f58f-c3a2-4ed2-af43-500cec02efa1}</Project>
       <Name>BackgroundTileTimerTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CortanaComponent\CortanaComponent.csproj">
+      <Project>{3cbfe7d9-05a7-4b9e-b6b9-86d3a71d2c12}</Project>
+      <Name>CortanaComponent</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
+      <Name>Microsoft Advertising SDK for XAML</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Services.Store.Engagement, Version=10.0">
+      <Name>Microsoft Engagement Framework</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

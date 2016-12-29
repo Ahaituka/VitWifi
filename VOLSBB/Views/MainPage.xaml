@@ -73,7 +73,7 @@
 
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
@@ -87,7 +87,7 @@
 
 
             <Viewbox >
-                <TextBlock Text="VOLSBB">
+                <TextBlock Text="VITWIFI">
 
                 </TextBlock>
                 

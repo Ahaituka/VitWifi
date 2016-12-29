@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en-us" Name="HomeControlCommandSet_en-us">
+    <CommandPrefix>Wifi</CommandPrefix>
+    <Example>Login,Logout,Usage,Data consumed</Example>
+
+   
+    <Command Name="Login">
+      <Example>Login</Example>
+      <ListenFor>Login</ListenFor>
+      <Feedback>Trying to log in</Feedback>
+      <VoiceCommandService Target="VoiceCommandService" />
+    </Command>
+
+    <Command Name="Logout">
+      <Example>Logout</Example>
+      <ListenFor>Logout</ListenFor>
+      <Feedback>Logging You Out</Feedback>
+      <VoiceCommandService Target="VoiceCommandService" />
+    </Command>
+
+
+    <Command Name="Usage">
+      <Example>Usage</Example>
+      <ListenFor>Usage</ListenFor>
+      <ListenFor> data consumed</ListenFor>
+      <Feedback>Checking your usage</Feedback>
+      <VoiceCommandService Target="VoiceCommandService" />
+    </Command>
+  
+  </CommandSet>
+</VoiceCommands>

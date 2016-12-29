@@ -9,6 +9,10 @@ using System.Linq;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.Storage;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.VoiceCommands;
+using Microsoft.Services.Store.Engagement;
 
 namespace VOLSBB
 {
@@ -20,45 +24,6 @@ namespace VOLSBB
     {
         public App()
         {
-
-
-            TileContent content = new TileContent()
-            {
-                Visual = new TileVisual()
-                {
-                   
-
-                    TileWide = new TileBinding()
-                    {
-                        Content = new TileBindingContentAdaptive()
-                        {
-                            Children =
-                            {
-                    new AdaptiveText()
-                    {
-                        Text = "Jennifer Parker",
-                        HintStyle = AdaptiveTextStyle.Subtitle
-                    },
-
-                    new AdaptiveText()
-                    {
-                        Text = "Photos from our trip",
-                        HintStyle = AdaptiveTextStyle.CaptionSubtle
-                    },
-
-                    new AdaptiveText()
-                    {
-                        Text = "Check out these awesome photos I took while in New Zealand!",
-                        HintStyle = AdaptiveTextStyle.CaptionSubtle
-                    }
-                            }
-                        }
-                    },
-
-                   
-                }
-            };
-
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
 
@@ -89,6 +54,21 @@ namespace VOLSBB
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
+            try
+            {
+                StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"HomeControlCommands.xml");
+                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("There was an error registering the Voice Command Definitions", ex);
+            }
+            StoreServicesEngagementManager engagementManager = StoreServicesEngagementManager.GetDefault();
+            await engagementManager.RegisterNotificationChannelAsync();
+
+          
+
+         
             // TODO: add your long-running task here
             await NavigationService.NavigateAsync(typeof(Views.MainPage));
         }

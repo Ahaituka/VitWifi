@@ -11,6 +11,11 @@ namespace VOLSBB.Views
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Disabled;
         }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
