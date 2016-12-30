@@ -102,7 +102,7 @@ namespace VOLSBB.Views
             {
                 var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
                 if (backgroundAccessStatus == BackgroundAccessStatus.Denied) { return; }
-                BackgroundTaskHelper.Register(TASK_NAME, "BackgroundTileTimerTask.BackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, true, null);
+                BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, true, null);
                 BackgroundTaskHelper.Register("ToastBackgroundTask", "Tasks.ToastBackgroundTask", new ToastNotificationActionTrigger(), false, false, null);
                 RegisterTask();
                 register.Content = "UnRegister";
