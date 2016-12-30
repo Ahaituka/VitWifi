@@ -20,7 +20,7 @@ namespace VOLSBB.Views
        public static bool Registered;        
         
      
-        private async void ShowDialog(string message)
+        public async  static void ShowDialog(string message)
         {
             var dlg = new MessageDialog(message);
             await dlg.ShowAsync();
