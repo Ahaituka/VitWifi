@@ -1,15 +1,16 @@
-<Page x:Class="VOLSBB.Views.MainPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:Behaviors="using:Template10.Behaviors"
-      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:controls="using:Template10.Controls"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="using:VOLSBB.Views"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:vm="using:VOLSBB.ViewModels"
-      mc:Ignorable="d">
+<Page
+    x:Class="VOLSBB.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="using:Template10.Behaviors"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:VOLSBB.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:VOLSBB.ViewModels"
+    mc:Ignorable="d">
 
     <Page.DataContext>
         <vm:MainPageViewModel x:Name="ViewModel" />
@@ -24,7 +25,9 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for narrow view  --><!--
+        -->
+        <!--  TODO: change properties for narrow view  -->
+        <!--
                         <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
                     </VisualState.Setters>
                 </VisualState>
@@ -33,7 +36,9 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for normal view  --><!--
+        -->
+        <!--  TODO: change properties for normal view  -->
+        <!--
                         <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
                     </VisualState.Setters>
                 </VisualState>
@@ -42,18 +47,21 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        --><!--  TODO: change properties for wide view  --><!--
+        -->
+        <!--  TODO: change properties for wide view  -->
+        <!--
                         <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateMnager.VisualStateGroups>-->
 
-        <controls:PageHeader x:Name="pageHeader"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True"
-                             Text="Main Page">
+        <controls:PageHeader
+            x:Name="pageHeader"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            Text="Main Page">
 
             <!--  secondary commands  -->
             <controls:PageHeader.SecondaryCommands>
@@ -64,21 +72,22 @@
 
         </controls:PageHeader>
 
-        <RelativePanel EntranceNavigationTransitionInfo.IsTargetElement="True"
-                       RelativePanel.AlignBottomWithPanel="True"
-                       RelativePanel.AlignLeftWithPanel="True"
-                       RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.Below="pageHeader"/>
+        <RelativePanel
+            EntranceNavigationTransitionInfo.IsTargetElement="True"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="pageHeader" />
 
 
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="150" />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            
-            
+
+
             <!--<StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
                 <TextBlock Text="Background Task" VerticalAlignment="Center"/>
                 <Button x:Name="EnableButton" Click="Enable" Margin="4" VerticalAlignment="Center">Enable</Button>
@@ -86,28 +95,62 @@
             </StackPanel>-->
 
 
-            <Viewbox >
-                <TextBlock Text="VITWIFI">
+            <Viewbox>
+                <TextBlock Text="VITWIFI" />
 
-                </TextBlock>
-                
 
-            </Viewbox >
-            
+            </Viewbox>
+
 
             <Viewbox Grid.Row="1" Margin="20">
-                <StackPanel  Orientation="Vertical" Grid.Row="1">
-                    <TextBox  x:Name="User" Margin="10" Width="250" HorizontalAlignment="Center" PlaceholderText="UserName"/>
-                    <PasswordBox  x:Name="Pass"  Width="250"  HorizontalAlignment="Center" PlaceholderText="Password"/>
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <TextBox
+                        x:Name="User"
+                        Width="250"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        PlaceholderText="UserName" 
+                        TextChanged="User_TextChanged"/>
+                    <PasswordBox
+                        x:Name="Pass"
+                        Width="250"
+                        HorizontalAlignment="Center"
+                        PasswordChanged="Pass_PasswordChanged"
+                     
+                        PlaceholderText="Password"   />
                 </StackPanel>
             </Viewbox>
 
             <Viewbox Grid.Row="2">
-                <StackPanel Orientation="Horizontal" Grid.Row="2">
-                    <Button HorizontalAlignment="Left" Width="150"   x:Name="register" Click="Register" Margin="10" >Register</Button>
-                    <Button HorizontalAlignment="Left" Width="150"   x:Name="LoginButton" Click="Login"  Margin="10" >Login</Button>
-                    <Button HorizontalAlignment="Right" Width="150"  x:Name="LogoutButton"  Click="Logout" Margin="10" >Logout</Button>
-                   
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Button
+                        x:Name="register"
+                        Width="150"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        Click="Register"
+                        IsEnabled="False">
+                        Register
+                    </Button>
+                    <Button
+                        x:Name="LoginButton"
+                        Width="150"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        Click="Login"
+                        IsEnabled="False">
+                        Login
+                    </Button>
+                    <Button
+                        x:Name="LogoutButton"
+                        Width="150"
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        Click="Logout"
+                        IsEnabled="False">
+                        Logout
+                    </Button>
+
 
                 </StackPanel>
             </Viewbox>

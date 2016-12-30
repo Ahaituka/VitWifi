@@ -16,11 +16,12 @@ namespace VOLSBB.Views
 {
     public sealed partial class MainPage : Page
     {
-       private const string TASK_NAME = "TILE_UPDATE_TIMER_TASK_SAMPLE";
-       public static bool Registered;        
-        
-     
-        public async  static void ShowDialog(string message)
+
+        private const string TASK_NAME = "TILE_UPDATE_TIMER_TASK_SAMPLE";
+        public static bool Registered;
+
+
+        public async static void ShowDialog(string message)
         {
             var dlg = new MessageDialog(message);
             await dlg.ShowAsync();
@@ -39,11 +40,13 @@ namespace VOLSBB.Views
         }
         public MainPage()
         {
-            
+
 
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-         
+
+            //      CredentialsVerifier();
+
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
                 if (task.Value.Name == "SampleBackgroundTask")
@@ -58,8 +61,35 @@ namespace VOLSBB.Views
             }
         }
 
-      private async void Register(object sender, RoutedEventArgs e)
+        //private async Task<bool> CredentialsVerifier()
+        //{
+        //    if (User.Text.Length != 0 && Pass.Password.Length != 0)
+        //    {
+        //        register.IsEnabled = true;
+        //        LoginButton.IsEnabled = true;
+        //        LogoutButton.IsEnabled = true;
+        //        var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        //        localSettings.Values["user"] = User.Text;
+        //        localSettings.Values["pass"] = Pass.Password;
+        //        await Network.Pronto.Login();
+        //        return true;
+        //    }
+        //    else
+        //        register.IsEnabled = false;
+        //    LoginButton.IsEnabled = false;
+        //    LogoutButton.IsEnabled = false;
+
+        //    return false;
+
+        //}
+        private async void Register(object sender, RoutedEventArgs e)
         {
+            if(!isValid)
+            {
+                ShowDialog("Please Fill Your Credentials Correctly");
+                return;
+            }
+
             if (Registered)
             {
                 BackgroundTaskHelper.Unregister("SampleBackgroundTask");
@@ -80,21 +110,84 @@ namespace VOLSBB.Views
             }
         }
 
-  
-        private void Logout(object sender, RoutedEventArgs e)
+
+        private async void Logout(object sender, RoutedEventArgs e)
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-               
+
             }
+
+            var response = await Network.Pronto.Logout();
+            ShowDialog(response);
         }
 
-        private void Login(object sender, RoutedEventArgs e)
+        private async void Login(object sender, RoutedEventArgs e)
         {
-           
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            localSettings.Values["user"] = User.Text;
+            localSettings.Values["pass"] = Pass.Password;
+            var response = await Network.Pronto.Login();
+            ShowDialog(response);
+
         }
 
 
+      private  bool isValid
+        {
+            get
+            {
 
+           
+                if (User.Text.Length != 0 && Pass.Password.Length != 0)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
+
+        private void Pass_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (isValid)
+            {
+                register.IsEnabled = true;
+                LoginButton.IsEnabled = true;
+                LogoutButton.IsEnabled = true;
+
+            }
+            else
+            {
+                 register.IsEnabled = false;
+                LoginButton.IsEnabled = false;
+                LogoutButton.IsEnabled = false;
+
+            }
+
+        }
+
+        private void User_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isValid)
+            {
+                register.IsEnabled = true;
+                LoginButton.IsEnabled = true;
+                LogoutButton.IsEnabled = true;
+
+            }
+            else
+            {
+                register.IsEnabled = false;
+                LoginButton.IsEnabled = false;
+                LogoutButton.IsEnabled = false;
+
+            }
+
+        }
     }
 }
