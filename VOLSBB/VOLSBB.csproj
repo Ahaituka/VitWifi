@@ -196,6 +196,10 @@
       <Project>{3cbfe7d9-05a7-4b9e-b6b9-86d3a71d2c12}</Project>
       <Name>CortanaComponent</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{c6007e34-b35c-4c12-8aa2-836f80bd87f7}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
