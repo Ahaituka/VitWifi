@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volsbb Onetouch", "Volsbb Onetouch\Volsbb Onetouch.csproj", "{09E2F088-9380-4B2F-9657-81093189B670}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "..\..\..\..\Desktop\Tasks\Tasks.csproj", "{0750F780-D497-45EF-96B4-ABDC0E71A618}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOLSBB", "VOLSBB\VOLSBB.csproj", "{00448508-8749-41C2-A08A-8EE47B42A8FC}"
@@ -27,26 +25,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|ARM.ActiveCfg = Debug|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|ARM.Build.0 = Debug|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|ARM.Deploy.0 = Debug|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x64.ActiveCfg = Debug|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x64.Build.0 = Debug|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x64.Deploy.0 = Debug|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x86.ActiveCfg = Debug|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x86.Build.0 = Debug|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Debug|x86.Deploy.0 = Debug|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|Any CPU.ActiveCfg = Release|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|ARM.ActiveCfg = Release|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|ARM.Build.0 = Release|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|ARM.Deploy.0 = Release|ARM
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x64.ActiveCfg = Release|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x64.Build.0 = Release|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x64.Deploy.0 = Release|x64
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x86.ActiveCfg = Release|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x86.Build.0 = Release|x86
-		{09E2F088-9380-4B2F-9657-81093189B670}.Release|x86.Deploy.0 = Release|x86
 		{0750F780-D497-45EF-96B4-ABDC0E71A618}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{0750F780-D497-45EF-96B4-ABDC0E71A618}.Debug|ARM.ActiveCfg = Debug|ARM
 		{0750F780-D497-45EF-96B4-ABDC0E71A618}.Debug|ARM.Build.0 = Debug|ARM
