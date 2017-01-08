@@ -36,15 +36,7 @@ namespace VOLSBB.Views
 
     // Launch the URI
     var success = await Windows.System.Launcher.LaunchUriAsync(uriSkype, promptOptions);
-
-    if (success)
-    {
-        // URI launched
-    }
-    else
-    {
-        // URI launch failed
-    }
+  
         }
 
         private async void MailButton(object sender, Windows.UI.Xaml.RoutedEventArgs e)

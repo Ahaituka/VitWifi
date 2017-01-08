@@ -80,6 +80,7 @@
             RelativePanel.Below="pageHeader" />
 
 
+
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="150" />
@@ -96,6 +97,7 @@
 
 
             <Viewbox>
+
                 <TextBlock Text="VITWIFI" />
 
 
@@ -109,15 +111,14 @@
                         Width="250"
                         Margin="10"
                         HorizontalAlignment="Center"
-                        PlaceholderText="UserName" 
-                        TextChanged="User_TextChanged"/>
+                        PlaceholderText="UserName"
+                        TextChanged="User_TextChanged" />
                     <PasswordBox
                         x:Name="Pass"
                         Width="250"
                         HorizontalAlignment="Center"
                         PasswordChanged="Pass_PasswordChanged"
-                     
-                        PlaceholderText="Password"   />
+                        PlaceholderText="Password" />
                 </StackPanel>
             </Viewbox>
 

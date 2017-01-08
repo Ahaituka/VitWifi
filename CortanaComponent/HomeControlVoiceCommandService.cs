@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Network;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.AppService;
@@ -75,10 +76,28 @@ namespace CortanaComponent
                         break;
 
                     case "Logout":
-                        string logoutMessage = NetworkNames.ToString();
+                        string logoutMessage;
+                        bool level = await Pronto.GetNetworkLevelUsingGoogle();
+                        if (!level)
+                        {
+                            logoutMessage=" You are already Disconnected ";
+                            
+                        }
+                        else
+                        {
+                            var networkName = await Network.Pronto.GetNetwoksSSid();
+                            if (networkName.Equals("OK"))
+                            {                               
+                                logoutMessage = await Pronto.Logout();                              
+                            }
+                            else
+                            {                                
+                                logoutMessage="You are Not Connected To Vit 2.4G";
+                            }
+                        }
                         VoiceCommandUserMessage userLogoutMessage = new VoiceCommandUserMessage();
-                        userLogoutMessage.DisplayMessage = string.Format("The current networks is {0} ", userLogoutMessage);
-                        userLogoutMessage.SpokenMessage = string.Format("The current networks is {0} ", userLogoutMessage);
+                        userLogoutMessage.DisplayMessage = logoutMessage;
+                        userLogoutMessage.SpokenMessage = logoutMessage;
                         VoiceCommandResponse logoutResponse = VoiceCommandResponse.CreateResponse(userLogoutMessage, null);
                         await voiceServiceConnection.ReportSuccessAsync(logoutResponse);
                         break;
