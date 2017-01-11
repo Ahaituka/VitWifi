@@ -66,13 +66,30 @@ namespace CortanaComponent
                 switch (voiceCommand.CommandName)
                 {
                     case "Login":
-                        string x = NetworkNames.ToString();
-                        VoiceCommandUserMessage userMessage = new VoiceCommandUserMessage();
-                        userMessage.DisplayMessage = string.Format("The current networks is {0} ",x);
-                        userMessage.SpokenMessage = string.Format("The current networks is {0} ", x);
+                        string loginMessage;
+                        bool loginlevel = await Pronto.GetNetworkLevelUsingGoogle();
+                        if (loginlevel)
+                        {
+                            loginMessage = " You are already Connected ";
 
-                        VoiceCommandResponse response = VoiceCommandResponse.CreateResponse(userMessage, null);
-                        await voiceServiceConnection.ReportSuccessAsync(response);
+                        }
+                        else
+                        {
+                            var networkName = await Network.Pronto.GetNetwoksSSid();
+                            if (networkName.Equals("OK"))
+                            {
+                                loginMessage = await Pronto.Login();
+                            }
+                            else
+                            {
+                                loginMessage = "You are Not Connected To Vit 2.4G";
+                            }
+                        }
+                        VoiceCommandUserMessage userLoginMessage = new VoiceCommandUserMessage();
+                        userLoginMessage.DisplayMessage = loginMessage;
+                        userLoginMessage.SpokenMessage = loginMessage;
+                        VoiceCommandResponse loginResponse = VoiceCommandResponse.CreateResponse(userLoginMessage, null);
+                        await voiceServiceConnection.ReportSuccessAsync(loginResponse);
                         break;
 
                     case "Logout":
