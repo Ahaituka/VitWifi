@@ -110,7 +110,7 @@ namespace VOLSBB.Views
                 var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 localSettings.Values["user"] = User.Text;
                 localSettings.Values["pass"] = Pass.Password;
-                BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, true ,new SystemCondition(SystemConditionType.InternetNotAvailable));
+                BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, false ,null);
 
                 BackgroundTaskHelper.Register("ToastBackgroundTask", "Tasks.ToastBackgroundTask", new ToastNotificationActionTrigger(), false, false, null);
                 RegisterTask();
@@ -159,7 +159,7 @@ namespace VOLSBB.Views
             localSettings.Values["pass"] = Pass.Password;
             NetworkConnectivityLevel _level = await Network.Pronto.GetNetworkLevel();
             bool level = await Pronto.GetNetworkLevelUsingGoogle();
-            if (_level.ToString().ToLower().In("internetaccess") && level)
+            if (level)
             {
                 ShowDialog("Already Connected ");
                 return;

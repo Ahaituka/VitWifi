@@ -63,15 +63,22 @@ namespace Network
             {
                 //Send the GET request
                 httpResponse = await httpClient.GetAsync(new Uri(checkUriString));
-               
+                
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
             }
             catch(Exception ex)
             {
                
                 return false;
             }
-
-            return true;
+            var succes = httpResponseBody.Contains("authlogin");
+            var gSuccess = httpResponseBody.Contains("Google"); 
+            if (!succes )
+                return true;
+            else
+                return false;
 
         }
 
@@ -220,7 +227,7 @@ namespace Network
             var exist = httpResponseBody.Contains("account");
             var invalid = httpResponseBody.Contains("again");
             var succes = httpResponseBody.Contains("Congratulations ");
-            if (_level.ToString().ToLower().In("internetaccess") || succes)
+            if (succes)
             {
                 return "Login Succesful";
               

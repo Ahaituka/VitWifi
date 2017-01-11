@@ -184,10 +184,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\Tasks\Tasks.csproj">
-      <Project>{0750f780-d497-45ef-96b4-abdc0e71a618}</Project>
-      <Name>Tasks</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BackgroundTileTimerTask\BackgroundTileTimerTask.csproj">
       <Project>{9108f58f-c3a2-4ed2-af43-500cec02efa1}</Project>
       <Name>BackgroundTileTimerTask</Name>
@@ -199,6 +195,10 @@
     <ProjectReference Include="..\Network\Network.csproj">
       <Project>{c6007e34-b35c-4c12-8aa2-836f80bd87f7}</Project>
       <Name>Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasks\Tasks.csproj">
+      <Project>{0750f780-d497-45ef-96b4-abdc0e71a618}</Project>
+      <Name>Tasks</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
