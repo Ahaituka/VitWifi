@@ -31,7 +31,7 @@ namespace VOLSBB
 
             // some settings must be set in app.constructor
             var settings = SettingsService.Instance;
-            RequestedTheme = settings.AppTheme;
+            //RequestedTheme = 
             CacheMaxDuration = settings.CacheMaxDuration;
             ShowShellBackButton = settings.UseShellBackButton;
             AutoSuspendAllFrames = true;

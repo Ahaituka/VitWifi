@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:VOLSBB.ViewModels"
     x:Name="ThisPage"
+    RequestedTheme="Dark"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -59,39 +60,134 @@
                 </StackPanel>
             </StackPanel>-->
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel
-                    x:Name="Stack0"
-                    Margin="10"
-                    Orientation="Horizontal">
+                <StackPanel x:Name="Stack0" Margin="10">
                     <TextBlock
-                        FontSize="22"
-                        FontWeight="Bold"
-                        Text="Renewal Date:"
-                        TextWrapping="Wrap" />
-                    <CalendarDatePicker Margin="30,0,0,0" />
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Text="Plan Deatils" />
                 </StackPanel>
                 <StackPanel
-                    x:Name="Stack1"
+                    x:Name="Limit"
                     Margin="10"
                     Orientation="Horizontal">
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="Data Usage:"
+                        Text="Data Limit :"
                         TextWrapping="Wrap" />
                     <TextBlock
-                        x:Name="UsageConnectionText"
+                        x:Name="dataLimit"
+                        Margin="20,0"
+                        FontSize="22" />
+
+                </StackPanel>
+                <StackPanel
+                    x:Name="StartDate"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Data Limit :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataStartDate"
                         Margin="20,0"
                         FontSize="22"
-                        Text="5.37 GB" />
+                        Text="Not Checked" />
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center">
-                    <Button>
+                <StackPanel
+                    x:Name="EndDate"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Data Limit :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataEndDate"
+                        Margin="20,0"
+                        FontSize="22"
+                        Text="Not Checked" />
+                </StackPanel>
+                <StackPanel x:Name="Usage" Margin="10">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Text="Usage" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="Time"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Total Time      :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataTime"
+                        Margin="20,0"
+                        FontSize="22"
+                        Text="Not Checked" />
+
+                </StackPanel>
+                <StackPanel
+                    x:Name="Uploaded"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Uploaded       :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataUploaded"
+                        Margin="20,0"
+                        FontSize="22"
+                        Text="Not Checked" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="Downloaded"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Downloaded  :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataDownloaded"
+                        Margin="20,0"
+                        FontSize="22"
+                        Text="Not Checked" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="Total"
+                    Margin="10"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Text="Total Data      :"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="dataTotal"
+                        Margin="20,0"
+                        FontSize="22"
+                        Text="Not Checked" />
+                </StackPanel>
+                <StackPanel Margin="10" HorizontalAlignment="Center">
+                    <Button Name="refershButton" Click="Button_Click">
                         <SymbolIcon Symbol="Refresh" />
                     </Button>
                 </StackPanel>
 
             </StackPanel>
+
         </ScrollViewer>
 
         <VisualStateManager.VisualStateGroups>

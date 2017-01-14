@@ -10,6 +10,7 @@
     xmlns:local="using:VOLSBB.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:VOLSBB.ViewModels"
+    RequestedTheme="Dark"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -98,7 +99,7 @@
 
             <Viewbox>
 
-                <TextBlock Text="VITWIFI" />
+                <TextBlock Text="AutoConnect" />
 
 
             </Viewbox>

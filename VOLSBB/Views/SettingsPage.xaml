@@ -11,6 +11,7 @@
     xmlns:local="using:VOLSBB.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:VOLSBB.ViewModels"
+    RequestedTheme="Dark"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -68,14 +69,14 @@
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.AlignTopWithPanel="True" />
 
-                        <ToggleSwitch
+                        <!--<ToggleSwitch
                             x:Name="UseLightThemeToggleSwitch"
                             Header="Requested Application Theme"
                             IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
                             OffContent="Current theme is Dark"
                             OnContent="Current theme is Light"
                             RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />
+                            RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />-->
 
                         <ToggleSwitch
                             x:Name="ShowHamburgerButtonToggleSwitch"
@@ -85,7 +86,7 @@
                             OffContent="Hamburger Button is hidden"
                             OnContent="Hamburger Button is visible"
                             RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.Below="UseLightThemeToggleSwitch" />
+                            RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />
 
                         <ToggleSwitch
                             x:Name="IsFullScreenToggleSwitch"
@@ -110,9 +111,7 @@
                                 Content="Show Busy"
                                 RelativePanel.AlignBottomWith="BusyTextTextBox"
                                 RelativePanel.RightOf="BusyTextTextBox" />-->
-
                     </RelativePanel>
-
                 </ScrollViewer>
             </PivotItem>
 
@@ -129,16 +128,13 @@
                             <RowDefinition Height="220" />
                             <RowDefinition Height="120" />
                             <RowDefinition Height="*" />
-
                         </Grid.RowDefinitions>
                         <RelativePanel Grid.Row="0">
                             <TextBlock
                                 x:Name="DeveloperTextBlock"
                                 Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                 Text="App developed by:" />
-
                             <StackPanel x:Name="Shubham" RelativePanel.Below="DeveloperTextBlock">
-
                                 <TextBlock
                                     x:Name="shubh"
                                     Margin="0,0,0,0"
@@ -147,7 +143,6 @@
                                     Style="{StaticResource SubheaderTextBlockStyle}"
                                     Text="Shubham Jain" />
                                 <StackPanel Orientation="Horizontal">
-
                                     <HyperlinkButton
                                         Width="50"
                                         Height="50"
@@ -261,7 +256,7 @@
                                 <Button Click="MailButton">
                                     <SymbolIcon Symbol="Mail" />
                                 </Button>
-                                <Button Click="CallButton" Margin="10,0,0,0">
+                                <Button Margin="10,0,0,0" Click="CallButton">
                                     <SymbolIcon Symbol="Phone" />
                                 </Button>
 

@@ -13,6 +13,8 @@ namespace VOLSBB.Views
 
         public SettingsPage()
         {
+            //UseLightThemeToggleSwitch.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             _SerializationService = Template10.Services.SerializationService.SerializationService.Json;

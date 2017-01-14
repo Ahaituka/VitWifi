@@ -1,8 +1,10 @@
 ﻿{
   "dependencies": {
+    "AngleSharp": "0.9.9",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "Microsoft.Toolkit.Uwp": "1.2.0",
-    "Microsoft.Toolkit.Uwp.Notifications": "1.2.0"
+    "Microsoft.Toolkit.Uwp.Notifications": "1.2.0",
+    "NotificationsExtensions.Win10": "14332.0.2"
   },
   "frameworks": {
     "uap10.0": {}

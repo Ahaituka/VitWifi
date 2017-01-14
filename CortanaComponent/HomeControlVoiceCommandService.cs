@@ -120,12 +120,26 @@ namespace CortanaComponent
                         break;
 
                     case "Usage":
-                        string usageMessage = NetworkNames.ToString();
-                        VoiceCommandUserMessage userUsageMessage = new VoiceCommandUserMessage();
-                        userUsageMessage.DisplayMessage = string.Format("The current networks is {0} ", userUsageMessage);
-                        userUsageMessage.SpokenMessage = string.Format("The current networks is {0} ", userUsageMessage);
-                        VoiceCommandResponse usageResponse = VoiceCommandResponse.CreateResponse(userUsageMessage, null);
-                        await voiceServiceConnection.ReportSuccessAsync(usageResponse);
+                        string dataMessage;
+                        bool usageLevel = await Pronto.GetNetworkLevelUsingGoogle();
+                        if (!usageLevel)
+                        {
+                            dataMessage = "Sorry Internet is Unavialable";
+
+                        }
+                        else
+                        {                          
+                            var data = await Pronto.DataUsage();
+                            var consumed = data.usageList[3];
+                            dataMessage = string.Format("Your Monthly Data Consumed is :" + consumed);
+                            
+                            
+                        }
+                        VoiceCommandUserMessage userDataMessage = new VoiceCommandUserMessage();
+                        userDataMessage.DisplayMessage = dataMessage;
+                        userDataMessage.SpokenMessage = dataMessage;
+                        VoiceCommandResponse dataUsageResponse = VoiceCommandResponse.CreateResponse(userDataMessage, null);
+                        await voiceServiceConnection.ReportSuccessAsync(dataUsageResponse);
                         break;
 
                     default:

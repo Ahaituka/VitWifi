@@ -34,8 +34,6 @@ namespace Tasks
     public sealed class SampleBackgroundTask : IBackgroundTask
     {
        
-
-       
         BackgroundTaskDeferral _deferral = null;     
         private async  Task BackgroundLogin()
         {
@@ -60,10 +58,6 @@ namespace Tasks
             }
            
         }
-
-        //var x = 0;
-
-    
 
         //
         // The Run method is the entry point of a background task.

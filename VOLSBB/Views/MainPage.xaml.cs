@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Windows.UI.Popups;
 using Network;
 using Windows.Networking.Connectivity;
+using Windows.Data.Xml.Dom;
 
 namespace VOLSBB.Views
 {
@@ -66,6 +67,31 @@ namespace VOLSBB.Views
             }
         }
 
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            try
+            {
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                string user = localSettings.Values["user"].ToString();
+                string pass = localSettings.Values["pass"].ToString();
+                User.Text = user;
+                Pass.Password = pass;
+               // await Pronto.TileUpdater();
+                register.IsEnabled = true;
+                LoginButton.IsEnabled = true;
+                var level = await Pronto.GetNetworkLevelUsingGoogle();
+                if(level)
+                {
+                    LogoutButton.IsEnabled = true;
+                }              
+            }
+            catch 
+            {
+
+                return; 
+            }
+        }
+
         //private async Task<bool> CredentialsVerifier()
         //{
         //    if (User.Text.Length != 0 && Pass.Password.Length != 0)
@@ -91,17 +117,23 @@ namespace VOLSBB.Views
         {
             if(!isValid)
             {
-                ShowDialog("Please Fill Your Credentials Correctly");
-                return;
+                if(Registered)
+                {
+                    UnRegisterTasks();
+                    return;
+                }
+                else
+                {
+                    ShowDialog("Please Fill Your Credentials Correctly");
+                    return;
+                }
+
+               
             }
 
             if (Registered)
             {
-                BackgroundTaskHelper.Unregister("SampleBackgroundTask");
-                BackgroundTaskHelper.Unregister("ToastBackgroundTask");
-                BackgroundTaskHelper.Unregister(TASK_NAME);
-                register.Content = "Regsiter";
-                Registered = false;
+                UnRegisterTasks();
             }
             else
             {
@@ -110,22 +142,28 @@ namespace VOLSBB.Views
                 var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 localSettings.Values["user"] = User.Text;
                 localSettings.Values["pass"] = Pass.Password;
-                BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, false ,null);
+                BackgroundTaskHelper.Register("SampleBackgroundTask", "Tasks.SampleBackgroundTask", new SystemTrigger(SystemTriggerType.NetworkStateChange, false), false, false, null);
 
                 BackgroundTaskHelper.Register("ToastBackgroundTask", "Tasks.ToastBackgroundTask", new ToastNotificationActionTrigger(), false, false, null);
                 RegisterTask();
                 register.Content = "UnRegister";
                 Registered = true;
-                
             }
         }
 
-
+        private void UnRegisterTasks()
+        {
+            BackgroundTaskHelper.Unregister("SampleBackgroundTask");
+            BackgroundTaskHelper.Unregister("ToastBackgroundTask");
+            BackgroundTaskHelper.Unregister(TASK_NAME);
+            register.Content = "Regsiter";
+            Registered = false;
+        }
         private async void Logout(object sender, RoutedEventArgs e)
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-
+                //return; 
             }          
             bool level = await Pronto.GetNetworkLevelUsingGoogle();
             if (!level)             
@@ -157,7 +195,7 @@ namespace VOLSBB.Views
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["user"] = User.Text;
             localSettings.Values["pass"] = Pass.Password;
-            NetworkConnectivityLevel _level = await Network.Pronto.GetNetworkLevel();
+          //  NetworkConnectivityLevel _level = await Network.Pronto.GetNetworkLevel();
             bool level = await Pronto.GetNetworkLevelUsingGoogle();
             if (level)
             {
