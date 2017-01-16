@@ -45,7 +45,8 @@ namespace Network
     }
     public class DataList
     {
-        public List<string> planList { get; set; }        public List<string> usageList { get; set; }
+        public List<string> planList { get; set; }
+        public List<string> usageList { get; set; }
         public List<string> errorList { get; set; }
         public DataList()
         {
@@ -438,7 +439,11 @@ namespace Network
 
 
             };
-            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
+            var toastNotification = new ToastNotification(content.GetXml());
+            var notification = ToastNotificationManager.CreateToastNotifier();
+            notification.Show(toastNotification);       
+          //  ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
+            toastNotification.ExpirationTime = DateTime.Now.AddSeconds(5);
         }
         private static Microsoft.Toolkit.Uwp.Notifications.TileBinding GenerateTileBindingMedium(string username)
         {
