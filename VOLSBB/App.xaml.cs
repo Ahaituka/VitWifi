@@ -13,6 +13,8 @@ using Windows.Storage;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.VoiceCommands;
 using Microsoft.Services.Store.Engagement;
+using Windows.Foundation.Collections;
+using VOLSBB.Views;
 
 namespace VOLSBB
 {
@@ -66,11 +68,25 @@ namespace VOLSBB
             StoreServicesEngagementManager engagementManager = StoreServicesEngagementManager.GetDefault();
             await engagementManager.RegisterNotificationChannelAsync();
 
-          
-
-         
             // TODO: add your long-running task here
-            await NavigationService.NavigateAsync(typeof(Views.MainPage));
+
+
+            IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
+            if (roamingProperties.ContainsKey("HasBeenHereBefore"))
+            {
+                // The normal case
+                await NavigationService.NavigateAsync(typeof(Views.MainPage));
+            }
+            else
+            {
+                // The first-time case
+                Shell.HamburgerMenu.IsFullScreen = true;
+                await NavigationService.NavigateAsync(typeof(Views.HelpPage));
+                roamingProperties["HasBeenHereBefore"] = bool.TrueString; // Doesn't really matter what
+            }
+
+          
+          
         }
     }
 }

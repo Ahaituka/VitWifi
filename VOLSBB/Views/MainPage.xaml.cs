@@ -51,7 +51,7 @@ namespace VOLSBB.Views
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             //      CredentialsVerifier();
-
+            
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
                 if (task.Value.Name == "SampleBackgroundTask")
@@ -62,7 +62,7 @@ namespace VOLSBB.Views
             }
             if (Registered)
             {
-                register.Content = "Unregister";
+                register.Content = "Forget Me";
 
             }
         }
@@ -76,7 +76,7 @@ namespace VOLSBB.Views
                 string pass = localSettings.Values["pass"].ToString();
                 User.Text = user;
                 Pass.Password = pass;
-               // await Pronto.TileUpdater();
+    //        await Pronto.TileUpdater();
                 register.IsEnabled = true;
                 LoginButton.IsEnabled = true;
                 var level = await Pronto.GetNetworkLevelUsingGoogle();
@@ -146,7 +146,7 @@ namespace VOLSBB.Views
 
                 BackgroundTaskHelper.Register("ToastBackgroundTask", "Tasks.ToastBackgroundTask", new ToastNotificationActionTrigger(), false, false, null);
                 RegisterTask();
-                register.Content = "UnRegister";
+                register.Content = "Forget Me";
                 Registered = true;
             }
         }
@@ -156,7 +156,7 @@ namespace VOLSBB.Views
             BackgroundTaskHelper.Unregister("SampleBackgroundTask");
             BackgroundTaskHelper.Unregister("ToastBackgroundTask");
             BackgroundTaskHelper.Unregister(TASK_NAME);
-            register.Content = "Regsiter";
+            register.Content = "Remember Me";
             Registered = false;
         }
         private async void Logout(object sender, RoutedEventArgs e)

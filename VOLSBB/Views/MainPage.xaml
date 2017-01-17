@@ -132,7 +132,7 @@
                         HorizontalAlignment="Left"
                         Click="Register"
                         IsEnabled="False">
-                        Register
+                        Remember Me
                     </Button>
                     <Button
                         x:Name="LoginButton"
