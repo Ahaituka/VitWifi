@@ -19,6 +19,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>VOLSBB_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>202728137C44B8C1D4927BD9D61077678BC09896</PackageCertificateThumbprint>
+    <HockeyAppResourceId>fe89ea0653fd4e2fa99fc385eff8cd0e</HockeyAppResourceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +92,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Service References\HockeyApp\ConnectedService.json" />
     <None Include="VOLSBB_StoreKey.pfx" />
     <None Include="VOLSBB_TemporaryKey.pfx" />
     <None Include="project.json" />

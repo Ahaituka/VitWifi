@@ -16,6 +16,7 @@ using Microsoft.Services.Store.Engagement;
 using Windows.Foundation.Collections;
 using VOLSBB.Views;
 
+
 namespace VOLSBB
 {
     /// Documentation on APIs used in this page:
@@ -71,6 +72,7 @@ namespace VOLSBB
 
             // TODO: add your long-running task here
 
+             //await Windows.Storage.ApplicationData.Current.ClearAsync();
 
             IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
