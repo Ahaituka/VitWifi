@@ -8,6 +8,7 @@
     <Command Name="Login">
       <Example>Login</Example>
       <ListenFor>Login</ListenFor>
+      <ListenFor>connect</ListenFor>
       <Feedback>Trying to log in</Feedback>
       <VoiceCommandService Target="VoiceCommandService" />
     </Command>
@@ -15,6 +16,7 @@
     <Command Name="Logout">
       <Example>Logout</Example>
       <ListenFor>Logout</ListenFor>
+      <ListenFor>Disconnect</ListenFor>
       <Feedback>Logging You Out</Feedback>
       <VoiceCommandService Target="VoiceCommandService" />
     </Command>
@@ -24,6 +26,7 @@
       <Example>Usage</Example>
       <ListenFor>Usage</ListenFor>
       <ListenFor> data consumed</ListenFor>
+      <ListenFor> data usage</ListenFor>
       <Feedback>Checking your usage</Feedback>
       <VoiceCommandService Target="VoiceCommandService" />
     </Command>

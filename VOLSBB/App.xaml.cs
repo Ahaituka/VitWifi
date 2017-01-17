@@ -56,7 +56,7 @@ namespace VOLSBB
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            await Task.Delay(6);
+            await Task.Delay(4);
             try
             {
                 StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"HomeControlCommands.xml");

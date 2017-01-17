@@ -40,7 +40,7 @@ namespace VOLSBB.Views
 
         private async void Rate(object sender, RoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri(string.Format("ms-windows-store:REVIEW?PFN={0}", "65150bitloks.Gravitas2016_0mga6vf5p7yxy")));
+            await Launcher.LaunchUriAsync(new Uri(string.Format("ms-windows-store:REVIEW?PFN={0}", "65150bitloks.VitWifi_0mga6vf5p7yxy")));
         }
     }
 }
