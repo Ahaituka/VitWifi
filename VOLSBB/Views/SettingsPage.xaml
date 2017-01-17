@@ -122,11 +122,11 @@
                 Header="Developers">
                 <Viewbox HorizontalAlignment="Left">
                     <Grid Name="bitloks" Margin="10,0,0,0">
-
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="220" />
                             <RowDefinition Height="120" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <RelativePanel Grid.Row="0">
@@ -158,6 +158,22 @@
                                         VerticalAlignment="Center"
                                         NavigateUri="https://www.instagram.com/bitloks/">
                                         <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                    </HyperlinkButton>
+                                    <HyperlinkButton
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        NavigateUri="http://stackoverflow.com/users/5303204/shubham-jain">
+                                        <Image Source="ms-appx:///Assets/stackoverflow.png" Stretch="Uniform" />
+                                    </HyperlinkButton>
+                                    <HyperlinkButton
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        NavigateUri="http://www.linkedin.com/in/bitloks">
+                                        <Image Source="ms-appx:///Assets/linkedin.png" Stretch="Uniform" />
                                     </HyperlinkButton>
                                 </StackPanel>
                             </StackPanel>
@@ -244,6 +260,43 @@
                         </RelativePanel>
                         <RelativePanel Grid.Row="3">
                             <TextBlock
+                                x:Name="DesignerTextBlock"
+                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                Text="App Logo By:" />
+
+                            <StackPanel x:Name="Mayank" RelativePanel.Below="DesignerTextBlock">
+
+                                <TextBlock
+                                    x:Name="mayank"
+                                    Margin="0,0,0,0"
+                                    FontWeight="Normal"
+                                    Foreground="LightGray"
+                                    Style="{StaticResource SubheaderTextBlockStyle}"
+                                    Text="Mayank Bansal " />
+                                <StackPanel Orientation="Horizontal">
+                                    <HyperlinkButton
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        NavigateUri="https://www.behance.net/mayankbansal">
+                                        <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                    </HyperlinkButton>
+                                    <HyperlinkButton
+                                        Width="50"
+                                        Height="50"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        NavigateUri="https://www.instagram.com/mbphotographydelhi">
+                                        <Image Source="ms-appx:///Assets/behance.png" Stretch="Uniform" />
+                                    </HyperlinkButton>
+
+
+                                </StackPanel>
+                            </StackPanel>
+                        </RelativePanel>
+                        <RelativePanel Grid.Row="4">
+                            <TextBlock
                                 x:Name="FeedBackTextBlock"
                                 Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                 Text="Feedback:" />
@@ -276,7 +329,7 @@
                     FontSize="25"
                     TextWrapping="Wrap">
                     <Run>
-                        VitWifi  is a simple UWP app that will work on any device running windows 10 whether the device is a  pc,phone or tablets.This app is specifically made for  the students of vit university to ease the process  having acces to  Intenet when  connected  to Vit's Wifi Network.It automatically pass your credentials to pronto server.
+                        VitWifi  is a simple UWP app that will work on any device running windows 10 whether the device is a  pc,phone or tablets.This app is specifically made for  the students of vit university to ease the process of  having acces to  Intenet when  connected  to Vit's Wifi Network.It automatically pass your credentials to pronto server.
                     </Run>
 
                     <LineBreak />

@@ -66,29 +66,37 @@ namespace VOLSBB.Views
             {
                 Busy.SetBusy(true, "Checking Usage");
                 var dataList = await Pronto.DataUsage();
-                dataLimit.Text = dataList.planList[0].ToString();
-                dataStartDate.Text = dataList.planList[1].ToString();
-                dataEndDate.Text = dataList.planList[2].ToString();
-                dataTime.Text = dataList.usageList[0].ToString();
-                dataUploaded.Text = dataList.usageList[1].ToString();
-                dataDownloaded.Text = dataList.usageList[2].ToString();
-                dataTotal.Text = dataList.usageList[3].ToString();
-                Busy.SetBusy(false);
-                
-                StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-                StorageFile sampleFile = await localFolder.CreateFileAsync("dataUsage.txt", CreationCollisionOption.ReplaceExisting);
+                if (dataList.errorList.Count == 0)
+                {
+                    dataLimit.Text = dataList.planList[0].ToString();
+                    dataStartDate.Text = dataList.planList[1].ToString();
+                    dataEndDate.Text = dataList.planList[2].ToString();
+                    dataTime.Text = dataList.usageList[0].ToString();
+                    dataUploaded.Text = dataList.usageList[1].ToString();
+                    dataDownloaded.Text = dataList.usageList[2].ToString();
+                    dataTotal.Text = dataList.usageList[3].ToString();
+                    Busy.SetBusy(false);
 
-                ////Read the first line of dataFile.txt in LocalFolder and store it in a String
-                //StorageFile sampleFiile = await localFolder.GetFileAsync("dataFittlee.txt");
-                //IList<string> fileContent = await FileIO.ReadLinesAsync(sampleFiile);
+                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+                    StorageFile sampleFile = await localFolder.CreateFileAsync("dataUsage.txt", CreationCollisionOption.ReplaceExisting);
+
+                    ////Read the first line of dataFile.txt in LocalFolder and store it in a String
+                    //StorageFile sampleFiile = await localFolder.GetFileAsync("dataFittlee.txt");
+                    //IList<string> fileContent = await FileIO.ReadLinesAsync(sampleFiile);
 
 
 
-                var helper = new LocalObjectStorageHelper();                
-                await helper.SaveFileAsync(keyLargeObject, dataList);
+                    var helper = new LocalObjectStorageHelper();
+                    await helper.SaveFileAsync(keyLargeObject, dataList);
 
-                // Read complex/large objects 
-              
+                    // Read complex/large objects 
+
+                }
+                else
+                {
+                    Busy.SetBusy(false);
+                    MainPage.ShowDialog(dataList.errorList[0]);
+                }
          
 
          
@@ -97,7 +105,7 @@ namespace VOLSBB.Views
             }
             catch (System.Exception)
             {
-
+                Busy.SetBusy(false);
                 return;
             }
 

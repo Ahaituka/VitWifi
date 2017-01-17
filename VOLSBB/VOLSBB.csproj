@@ -99,8 +99,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FlipViewIndicator.cs" />
+    <Compile Include="Extensions\BoolExtensions.cs" />
+    <Compile Include="Models\InstructionItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\GoldValueToGaveGoldStringConverter.cs" />
+    <Compile Include="ValueConverters\InverseBooleanConverter.cs" />
+    <Compile Include="ValueConverters\NullToBoolConverter.cs" />
+    <Compile Include="ValueConverters\NullToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\RankConverter.cs" />
+    <Compile Include="ValueConverters\SelectedLegendItemToColorConverter.cs" />
+    <Compile Include="ViewModels\Design\WelcomeDesignViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
@@ -110,8 +121,8 @@
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HelpPage.xaml.cs">
-      <DependentUpon>HelpPage.xaml</DependentUpon>
+    <Compile Include="Views\HelpPAge.xaml.cs">
+      <DependentUpon>HelpPAge.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -132,8 +143,158 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\behance.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._LockScreenLogo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._LockScreenLogo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._LockScreenLogo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._LockScreenLogo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-20.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-20_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-30.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-30_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-36.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-36_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-40.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-40_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-60.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-60_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-64.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-64_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-72.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-72_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-80.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-80_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-96.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\._Square44x44Logo.targetsize-96_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\LockScreenLogo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\LockScreenLogo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\LockScreenLogo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\LockScreenLogo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-20.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-20_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-30.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-30_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-36.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-36_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-40.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-40_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-60.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-60_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-64.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-64_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-72.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-72_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-80.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-80_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-96.png" />
+    <Content Include="Assets\Logo Wifi\Logo - No Margin\Square44x44Logo.targetsize-96_altform-unplated.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\._Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\._Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\._Square71x71Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\._Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\._Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\Square71x71Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo- TileSmall\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square310x310Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square310x310Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\._Square310x310Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square310x310Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square310x310Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileLargeMedium\Square310x310Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\._Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\._Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\._Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\._Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\._Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo-TileWide\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo\._Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo\._Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo\._Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo\._Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo\._Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\Logo\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\Logo\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\Logo\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\Logo\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\Logo\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\._SplashScreen.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\._SplashScreen.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\._SplashScreen.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\._SplashScreen.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\._SplashScreen.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\SplashScreen.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\SplashScreen.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\SplashScreen\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\._StoreLogo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\._StoreLogo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\._StoreLogo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\._StoreLogo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\._StoreLogo.scale-400.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\StoreLogo.scale-125.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\StoreLogo.scale-150.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\StoreLogo.scale-200.png" />
+    <Content Include="Assets\Logo Wifi\StoreLogo\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Welcome\appLogo.png" />
     <Content Include="Assets\git2.png" />
     <Content Include="Assets\instagram.png" />
+    <Content Include="Assets\linkedin.png" />
+    <Content Include="Assets\stackoverflow.png" />
+    <Content Include="Assets\Welcome\gradient-white.png" />
+    <Content Include="Assets\Welcome\Register.jpg" />
+    <Content Include="Assets\Welcome\Login.png" />
+    <Content Include="Assets\Welcome\dataUsage.png" />
+    <Content Include="Assets\Welcome\liveTiles.png" />
+    <Content Include="Assets\Welcome\Logout.png" />
+    <Content Include="Assets\Welcome\lock.png" />
+    <Content Include="Assets\Welcome\alert.png" />
+    <Content Include="Assets\Welcome\plan.png" />
     <Content Include="Help.htm" />
     <Content Include="HomeControlCommands.xml" />
     <None Include="Package.StoreAssociation.xml" />
@@ -166,7 +327,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HelpPage.xaml">
+    <Page Include="Views\HelpPAge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,9 +348,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BackgroundTileTimerTask\BackgroundTileTimerTask.csproj">
       <Project>{9108f58f-c3a2-4ed2-af43-500cec02efa1}</Project>

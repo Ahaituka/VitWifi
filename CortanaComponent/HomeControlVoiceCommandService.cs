@@ -130,8 +130,15 @@ namespace CortanaComponent
                         else
                         {                          
                             var data = await Pronto.DataUsage();
-                            var consumed = data.usageList[3];
-                            dataMessage = string.Format("Your Monthly Data Consumed is :" + consumed);
+                            if (data.errorList.Count ==0)
+                            {
+                                var consumed = data.usageList[3];
+                                dataMessage = string.Format("Your Monthly Data Consumed is :" + consumed);
+                            }
+                            else
+                            {
+                                dataMessage ="Sorry" + data.errorList[0];
+                            }
                             
                             
                         }

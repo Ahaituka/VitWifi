@@ -41,7 +41,7 @@ namespace Network
             return items.Contains(item);
         }
 
-      
+
     }
     public class DataList
     {
@@ -60,23 +60,23 @@ namespace Network
     public class Pronto
     {
         private static Microsoft.Toolkit.Uwp.Notifications.TileContent _tileContent;
-       
+
         public static bool pinned = false;
-         
-        private const string uriString = "http://115.248.50.60/registration/chooseAuth.do";        
+
+        private const string uriString = "http://115.248.50.60/registration/chooseAuth.do";
         private const string checkUriString = "http://115.248.50.60/registration/Main.jsp?wispId=1&nasId=00:15:17:c8:09:b1";
-        private const string planString = "http://115.248.50.60/registration/main.do?content_key=%2FSelectedPlan.jsp";       
+        private const string planString = "http://115.248.50.60/registration/main.do?content_key=%2FSelectedPlan.jsp";
         private const string histroyString = "http://115.248.50.60/registration/customerSessionHistory.do";
         //Create an HTTP client object
         private static Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-         private const string loginString = "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://phc.prontonetworks.com/";
-         private const string logoutUriString = "http://phc.prontonetworks.com/cgi-bin/authlogout";
+        private const string loginString = "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://phc.prontonetworks.com/";
+        private const string logoutUriString = "http://phc.prontonetworks.com/cgi-bin/authlogout";
         private const string checkInternetUriString = "http://www.google.com";
         //Add a user-agent header to the GET request. 
         //  private const string WP_USER_AGENT = "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537";
         private const string WP_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36";
         private static Windows.Web.Http.Headers.HttpRequestHeaderCollection headers = httpClient.DefaultRequestHeaders;
-         private static readonly Windows.Web.Http.HttpClient _httpClient = new Windows.Web.Http.HttpClient();
+        private static readonly Windows.Web.Http.HttpClient _httpClient = new Windows.Web.Http.HttpClient();
         /// <summary>
         /// Gets connection level for the current Wifi Connection.
         /// </summary>
@@ -95,26 +95,26 @@ namespace Network
             {
                 //Send the GET request
                 httpResponse = await httpClient.GetAsync(new Uri(checkInternetUriString));
-                
+
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               
+
                 return false;
             }
             var succes = httpResponseBody.Contains("authlogin");
-            var gSuccess = httpResponseBody.Contains("Google"); 
-            if (!succes )
+            var gSuccess = httpResponseBody.Contains("Google");
+            if (!succes)
                 return true;
             else
                 return false;
 
         }
 
-        
+
         /// <summary>
         /// Gets connection level for the current Wifi Connection.
         /// </summary>
@@ -146,7 +146,7 @@ namespace Network
                     if (connectedProfile != null)
                     {
                         var x = connectedProfile.GetNetworkConnectivityLevel();
-                        
+
                         return x;
                     }
                     else
@@ -191,7 +191,7 @@ namespace Network
                         return "No WiFi Adapters Detected";
                     }
                     var connectedProfile = await firstAdapter.NetworkAdapter.GetConnectedProfileAsync();
-                
+
                     if (connectedProfile != null)
                     {
                         if (connectedProfile.ProfileName.ToLower().Equals("vit2.4g") || connectedProfile.ProfileName.ToLower().Equals("vit5g"))
@@ -215,24 +215,24 @@ namespace Network
 
         }
 
-       public static async Task<string> Login()
-         {
-           
+        public static async Task<string> Login()
+        {
+
             var error = "No credentials entered";
             string user, pass;
             try
             {
-                 var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                 user = localSettings.Values["user"].ToString();
-                 pass = localSettings.Values["pass"].ToString();
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                user = localSettings.Values["user"].ToString();
+                pass = localSettings.Values["pass"].ToString();
             }
-            catch 
+            catch
             {
 
                 return error;
             }
 
-       
+
 
             //string user = "wsfd";
             //string pass = "wsfd";
@@ -242,32 +242,33 @@ namespace Network
                                           new KeyValuePair<string, string>("userId", user),
                                           new KeyValuePair<string, string>("password", pass)
                                     });
-    
-             //The safe way to add a header value is to use the TryParseAdd method and verify the return value is true,
+
+            //The safe way to add a header value is to use the TryParseAdd method and verify the return value is true,
             //especially if the header value is coming from user input.           
             if (!headers.UserAgent.TryParseAdd(WP_USER_AGENT))
             {
                 throw new Exception("Invalid header value: " + WP_USER_AGENT);
             }
-           //Send the GET request asynchronously and retrieve the response as a string.
+            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
             try
             {
 
                 //Send the GET request
-                httpResponse = await httpClient.PostAsync(new Uri(loginString),postContent);
+                httpResponse = await httpClient.PostAsync(new Uri(loginString), postContent);
                 httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();              
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
 
 
 
             }
-            catch (Exception ex)            {
-             
-                    httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-                    return httpResponseBody; 
-                
+            catch (Exception ex)
+            {
+
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return httpResponseBody;
+
             }
             NetworkConnectivityLevel _level = await Network.Pronto.GetNetworkLevel();
             var exist = httpResponseBody.Contains("account");
@@ -276,20 +277,20 @@ namespace Network
             if (succes)
             {
                 return "Login Succesful";
-              
 
-            }                     
-             else if(invalid)
-                {
-                 return "Invalid Credentials";
-                }
+
+            }
+            else if (invalid)
+            {
+                return "Invalid Credentials";
+            }
             else
             {
                 return "Sorry that Account does  Not Exist";
             }
 
-            }
-    
+        }
+
         public static async Task<string> Logout()
         {
             if (!headers.UserAgent.TryParseAdd(WP_USER_AGENT))
@@ -305,7 +306,7 @@ namespace Network
                 httpResponse = await httpClient.GetAsync(new Uri(logoutUriString));
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-            }  
+            }
             catch (Exception ex)
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
@@ -313,7 +314,7 @@ namespace Network
             }
 
             var exist = httpResponseBody.Contains("successfully");
-            if(exist)
+            if (exist)
             {
 
                 return "You have successfully logged out";
@@ -325,53 +326,85 @@ namespace Network
 
             }
 
- 
+
         }
         public static async Task<DataList> DataUsage()
         {
-
+            var _level = await GetNetworkLevelUsingGoogle();
             DataList mainList = new DataList();
-            try
+            if (_level)
             {
-                var postContent = new FormUrlEncodedContent(
-                                        new KeyValuePair<string, string>[4] {
-                                          new KeyValuePair<string, string>("loginUserId", "14bce0718"),
-                                          new KeyValuePair<string, string>("authType", "Pronto"),
-                                          new KeyValuePair<string, string>("loginPassword", "khaitan22"),
-                                          new KeyValuePair<string, string>("submit", "Login")
-                                        });
-                System.Net.Http.HttpResponseMessage httpResponse;
-                // Create a new parser front-end (can be re-used)
-                var parser = new HtmlParser();
-                System.Net.CookieContainer cookies = new System.Net.CookieContainer();
-                HttpClientHandler handler = new HttpClientHandler();
-                handler.CookieContainer = cookies;
-                System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient(handler);
-                //  _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(WP_USER_AGENT);
-                httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(WP_USER_AGENT);
-                httpResponse = await httpClient.GetAsync(new Uri(checkUriString));
-                string planRessponseBody = await httpResponse.Content.ReadAsStringAsync();
-                httpResponse = await httpClient.PostAsync(new Uri(uriString), postContent);
-                string planRssesponseBody = await httpResponse.Content.ReadAsStringAsync();
-                httpResponse = await httpClient.GetAsync(new Uri(planString));
-                string planResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                var planDocument = parser.Parse(planResponseBody);
-                var planItemsCssSelector = planDocument.QuerySelectorAll("td[class = 'mainTextLeft']");
-                List<string> planList = new List<string>();
-                foreach (var item in planItemsCssSelector)
-                {
-                    planList.Add(item.TextContent.Trim());
+               
 
+                string user, pass;
+                try
+                {
+                    var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    user = localSettings.Values["user"].ToString();
+                    pass = localSettings.Values["pass"].ToString();
                 }
-                planList.RemoveAt(1); planList.RemoveAt(3);
-                IFormatProvider culture = new System.Globalization.CultureInfo("en-US");
-                DateTime startDate = DateTime.Parse(planList[1], culture);
-                DateTime endDate = DateTime.Parse(planList[2], culture);
-                DateTime today = DateTime.Today.AddMonths(-1);
-                var x = startDate.Day.ToString();
-                var historyParams = new FormUrlEncodedContent(
-             new KeyValuePair<string, string>[]
-             {
+                catch
+                {
+                    List<string> errorList = new List<string>();
+                    string httpResponseBody = "No credentials entered";
+                    errorList.Add(httpResponseBody);
+                    mainList.errorList = errorList;
+                    return mainList;
+                }
+
+                //  DataList mainList = new DataList();
+                try
+                {
+                    var postContent = new FormUrlEncodedContent(
+                                            new KeyValuePair<string, string>[4] {
+                                          new KeyValuePair<string, string>("loginUserId", user),
+                                          new KeyValuePair<string, string>("authType", "Pronto"),
+                                          new KeyValuePair<string, string>("loginPassword", pass),
+                                          new KeyValuePair<string, string>("submit", "Login")
+                                            });
+                    System.Net.Http.HttpResponseMessage httpResponse;
+                    // Create a new parser front-end (can be re-used)
+                    var parser = new HtmlParser();
+                    System.Net.CookieContainer cookies = new System.Net.CookieContainer();
+                    HttpClientHandler handler = new HttpClientHandler();
+                    handler.CookieContainer = cookies;
+                    System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient(handler);
+                    //  _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(WP_USER_AGENT);
+                    httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(WP_USER_AGENT);
+                    httpResponse = await httpClient.GetAsync(new Uri(checkUriString));
+                    string planRessponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    httpResponse = await httpClient.PostAsync(new Uri(uriString), postContent);
+                    string postRespondeBody = await httpResponse.Content.ReadAsStringAsync();
+                    var invalid = postRespondeBody.Contains("again");
+                    if (invalid)
+                    {
+                        List<string> errorList = new List<string>();
+                        string _invalid = "Invalid credentials entered";
+                        errorList.Add(_invalid);
+                        mainList.errorList = errorList;
+                        return mainList;
+
+                    }
+
+                    httpResponse = await httpClient.GetAsync(new Uri(planString));
+                    string planResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    var planDocument = parser.Parse(planResponseBody);
+                    var planItemsCssSelector = planDocument.QuerySelectorAll("td[class = 'mainTextLeft']");
+                    List<string> planList = new List<string>();
+                    foreach (var item in planItemsCssSelector)
+                    {
+                        planList.Add(item.TextContent.Trim());
+
+                    }
+                    planList.RemoveAt(1); planList.RemoveAt(3);
+                    IFormatProvider culture = new System.Globalization.CultureInfo("en-US");
+                    DateTime startDate = DateTime.Parse(planList[1], culture);
+                    DateTime endDate = DateTime.Parse(planList[2], culture);
+                    DateTime today = DateTime.Today.AddMonths(-1);
+                    var x = startDate.Day.ToString();
+                    var historyParams = new FormUrlEncodedContent(
+                 new KeyValuePair<string, string>[]
+                 {
                      new KeyValuePair<string, string>("location", "allLocations"),
                      new KeyValuePair<string, string>("parameter", "custom"),
                      new KeyValuePair<string, string>("customStartMonth",today.Month.ToString()),
@@ -381,40 +414,50 @@ namespace Network
                      new KeyValuePair<string, string>("customEndDay", "01"),
                      new KeyValuePair<string, string>("customEndYear", 2022.ToString()),
                      new KeyValuePair<string, string>("button", "View"),
-             });
-                httpResponse = await httpClient.PostAsync(new Uri(histroyString), historyParams);
-                string httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                //Just get the DOM representation for Data usage
-                var usagedocument = parser.Parse(httpResponseBody);
-                var usageItemsCssSelector = usagedocument.QuerySelectorAll("td[colspan = '3']");
+                 });
+                    httpResponse = await httpClient.PostAsync(new Uri(histroyString), historyParams);
+                    string httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    //Just get the DOM representation for Data usage
+                    var usagedocument = parser.Parse(httpResponseBody);
+                    var usageItemsCssSelector = usagedocument.QuerySelectorAll("td[colspan = '3']");
 
-                List<string> usageList = new List<string>();
-                foreach (var item in usageItemsCssSelector)
-                {
-                    var usageTime = item.NextElementSibling;
-                    usageList.Add(usageTime.Text().Trim());
-                    var uploadData = usageTime.NextElementSibling;
-                    usageList.Add(uploadData.Text().Trim());
-                    var downloadData = uploadData.NextElementSibling;
-                    usageList.Add(downloadData.Text().Trim());
-                    var totalData = downloadData.NextElementSibling;
-                    usageList.Add(totalData.Text().Trim());
+                    List<string> usageList = new List<string>();
+                    foreach (var item in usageItemsCssSelector)
+                    {
+                        var usageTime = item.NextElementSibling;
+                        usageList.Add(usageTime.Text().Trim());
+                        var uploadData = usageTime.NextElementSibling;
+                        usageList.Add(uploadData.Text().Trim());
+                        var downloadData = uploadData.NextElementSibling;
+                        usageList.Add(downloadData.Text().Trim());
+                        var totalData = downloadData.NextElementSibling;
+                        usageList.Add(totalData.Text().Trim());
+                    }
+                    mainList.planList = planList;
+                    mainList.usageList = usageList;
+                    return mainList;
                 }
-                mainList.planList = planList;
-                mainList.usageList = usageList;
-                return mainList;
+                catch (Exception ex)
+                {
+                    List<string> errorList = new List<string>();
+                    string httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                    errorList.Add(httpResponseBody);
+                    mainList.errorList = errorList;
+                    return mainList;
+                } 
             }
-            catch (Exception ex)
+
+            else
             {
                 List<string> errorList = new List<string>();
-                string httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-                errorList.Add(httpResponseBody);
+                string _internet = "No Internet connection";
+                errorList.Add(_internet);
                 mainList.errorList = errorList;
                 return mainList;
             }
         }
 
-        public static  void PopToast(string msg)
+        public static void PopToast(string msg)
         {
             // Generate the toast notification content and pop the toast
             ToastContent content = new ToastContent()
@@ -441,8 +484,8 @@ namespace Network
             };
             var toastNotification = new ToastNotification(content.GetXml());
             var notification = ToastNotificationManager.CreateToastNotifier();
-            notification.Show(toastNotification);       
-          //  ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
+            notification.Show(toastNotification);
+            //  ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
             toastNotification.ExpirationTime = DateTime.Now.AddSeconds(5);
         }
         private static Microsoft.Toolkit.Uwp.Notifications.TileBinding GenerateTileBindingMedium(string username)
@@ -464,15 +507,15 @@ namespace Network
                             HintAlign = AdaptiveTextAlign.Center,
                             HintStyle = AdaptiveTextStyle.Base
 
-                        },                      
+                        },
                          new AdaptiveText()
                         {
                             Text = "Consumed",
                             HintAlign = AdaptiveTextAlign.Center,
                             HintStyle = AdaptiveTextStyle.Caption
 
-                        } 
-                         
+                        }
+
                     }
                 }
             };
@@ -495,13 +538,13 @@ namespace Network
                                     HintTextStacking = AdaptiveSubgroupTextStacking.Center,
 
                                     Children =
-                                    {                                       
+                                    {
 
                                         new AdaptiveText()
                                         {
                                             Text = username,
                                              HintStyle = AdaptiveTextStyle.Title
-                                        
+
                                         },
                                         new AdaptiveText()
                                         {
@@ -541,7 +584,7 @@ namespace Network
                                     HintWeight = 1
                                 }
                             }
-                        },                      
+                        },
 
                         new AdaptiveText()
                         {
@@ -556,7 +599,7 @@ namespace Network
                             HintStyle = AdaptiveTextStyle.Title
                         }
 
-                        
+
                     }
                 }
             };
@@ -602,10 +645,22 @@ namespace Network
             //
             try
             {
-                var x = await DataUsage();
-                _tileContent = GenerateTileContent(x.usageList[3]);
-                var notification = new TileNotification(_tileContent.GetXml());
-                TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+                var x = await DataUsage();           
+                if (x.errorList.Count == 0)
+                {
+                    _tileContent = GenerateTileContent(x.usageList[3]);
+                    var notification = new TileNotification(_tileContent.GetXml());
+                    TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+                                 
+                    if(x.usageList[3].Contains("9."))
+                    {
+                        Pronto.PopToast("Your Monthly Data Usage have exceded 9 GB");
+                    } 
+                }
+                else
+                {
+                    return;
+                }
 
             }
             catch
