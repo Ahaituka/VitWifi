@@ -9,7 +9,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ExtendedSplashBackground}">
+    <Grid Background="#F39C11">
 
         <Canvas x:Name="rootCanvas"
                 HorizontalAlignment="Stretch"
