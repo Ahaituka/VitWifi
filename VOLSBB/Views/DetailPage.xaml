@@ -89,7 +89,7 @@
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="Data Limit :"
+                        Text="StartDate :"
                         TextWrapping="Wrap" />
                     <TextBlock
                         x:Name="dataStartDate"
@@ -104,7 +104,7 @@
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="Data Limit :"
+                        Text="EndDate:"
                         TextWrapping="Wrap" />
                     <TextBlock
                         x:Name="dataEndDate"

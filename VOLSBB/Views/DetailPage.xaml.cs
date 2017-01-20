@@ -76,7 +76,6 @@ namespace VOLSBB.Views
                     dataDownloaded.Text = dataList.usageList[2].ToString();
                     dataTotal.Text = dataList.usageList[3].ToString();
                     Busy.SetBusy(false);
-
                     StorageFolder localFolder = ApplicationData.Current.LocalFolder;
                     StorageFile sampleFile = await localFolder.CreateFileAsync("dataUsage.txt", CreationCollisionOption.ReplaceExisting);
 
@@ -84,12 +83,13 @@ namespace VOLSBB.Views
                     //StorageFile sampleFiile = await localFolder.GetFileAsync("dataFittlee.txt");
                     //IList<string> fileContent = await FileIO.ReadLinesAsync(sampleFiile);
 
-
-
+                    // Read complex/large objects 
                     var helper = new LocalObjectStorageHelper();
                     await helper.SaveFileAsync(keyLargeObject, dataList);
 
-                    // Read complex/large objects 
+                   await  Pronto.TileUpdater();
+
+                   
 
                 }
                 else
