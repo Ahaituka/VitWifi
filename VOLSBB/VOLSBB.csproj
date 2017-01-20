@@ -153,6 +153,7 @@
     <Content Include="Assets\instagram.png" />
     <Content Include="Assets\linkedin.png" />
     <Content Include="Assets\stackoverflow.png" />
+    <Content Include="Assets\Welcome\appLogo.png" />
     <Content Include="Assets\Welcome\gradient-white.png" />
     <Content Include="Assets\Welcome\Register.jpg" />
     <Content Include="Assets\Welcome\Login.png" />

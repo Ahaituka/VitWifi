@@ -329,7 +329,7 @@
                     FontSize="25"
                     TextWrapping="Wrap">
                     <Run>
-                        VitWifi  is a simple UWP app that will work on any device running windows 10 whether the device is a  pc,phone or tablets.This app is specifically made for  the students of vit university to ease the process of  having acces to  Intenet when  connected  to Vit's Wifi Network.It automatically pass your credentials to pronto server.
+                         Vit2.4G AutoConnect is a simple UWP app that will work on any device running windows 10 whether the device is a  PC,phone or tablets.This app is specifically made for the students of VITuniversity to ease the process of having access to  Intenet when connected to Vit's Wifi Network.It automatically passes your credentials to the pronto server.
                     </Run>
 
                     <LineBreak />
