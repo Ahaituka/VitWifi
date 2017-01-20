@@ -87,7 +87,7 @@ namespace VOLSBB.Views
                     var helper = new LocalObjectStorageHelper();
                     await helper.SaveFileAsync(keyLargeObject, dataList);
 
-                   await  Pronto.TileUpdater();
+                    Pronto.ValueTileUpdater(dataList.usageList[3].ToString());
 
                    
 

@@ -618,31 +618,7 @@ namespace Network
         }
         public static async Task TileUpdater()
         {
-            //    SecondaryTile tile = new SecondaryTile(DateTime.Now.Ticks.ToString())
-            //    {
-            //        DisplayName = "Vit 2.4G",
-            //        Arguments = "args"
-            //    };
-            //    tile.VisualElements.Square150x150Logo = Constants.Square150x150Logo;
-            //    tile.VisualElements.Wide310x150Logo = Constants.Wide310x150Logo;
-            //    tile.VisualElements.Square310x310Logo = Constants.Square310x310Logo;
-            //    tile.VisualElements.ShowNameOnSquare150x150Logo = true;
-            //    tile.VisualElements.ShowNameOnSquare310x310Logo = true;
-            //    tile.VisualElements.ShowNameOnWide310x150Logo = true;
-
-            //    if(pinned)
-            //    {
-            //        TileUpdateManager.CreateTileUpdaterForSecondaryTile(tile.TileId).Update(new TileNotification(_tilecContent.GetXml()));
-            //        return;
-            //    }
-
-            //    else if (!await tile.RequestCreateAsync())
-            //    {
-            //        return;
-            //    }
-            //    TileUpdateManager.CreateTileUpdaterForSecondaryTile(tile.TileId).Update(new TileNotification(_tileContent.GetXml()));
-            //    pinned = true;
-            //
+            
             try
             {
                 var x = await DataUsage();           
@@ -668,6 +644,14 @@ namespace Network
 
                 return;
             }
+
+        }
+
+        public static void ValueTileUpdater(string value)
+        {
+            _tileContent = GenerateTileContent(value);
+            var notification = new TileNotification(_tileContent.GetXml());
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
 
         }
 
