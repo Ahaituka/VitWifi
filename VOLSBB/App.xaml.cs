@@ -15,7 +15,7 @@ using Windows.ApplicationModel.VoiceCommands;
 using Microsoft.Services.Store.Engagement;
 using Windows.Foundation.Collections;
 using VOLSBB.Views;
-
+using Microsoft.HockeyApp;
 
 namespace VOLSBB
 {
@@ -29,6 +29,20 @@ namespace VOLSBB
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
+
+            #region Hockeyapp Integration
+            HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
+            HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e")
+          .SetExceptionDescriptionLoader((Exception ex) =>
+         {
+             return "Exception HResult: " + ex.HResult.ToString();
+         });
+            Microsoft.HockeyApp.HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e",
+        new Microsoft.HockeyApp.TelemetryConfiguration()
+        {
+            Collectors = WindowsCollectors.Metadata | WindowsCollectors.Session | WindowsCollectors.UnhandledException
+        }); 
+            #endregion
 
             #region app settings
 
@@ -57,7 +71,7 @@ namespace VOLSBB
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            await Task.Delay(4);
+           // await Task.Delay(4);
             try
             {
                 StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"HomeControlCommands.xml");

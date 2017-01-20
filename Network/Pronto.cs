@@ -100,7 +100,7 @@ namespace Network
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
 
             }
-            catch (Exception ex)
+            catch 
             {
 
                 return false;
@@ -160,7 +160,7 @@ namespace Network
                 return 0;
             }
 
-            return 0;
+           // return 0;
 
         }
 
