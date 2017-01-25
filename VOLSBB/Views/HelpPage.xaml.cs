@@ -100,8 +100,8 @@ namespace VOLSBB.Views
 
             InstructionItems.Add(new InstructionItem("Ready?",
                  "Everything is easy when you are crazy about it ,right?",
-                   null,
-               typeof(Views.MainPage)));
+                   null,"MainPage")
+               );
 
 
         }

@@ -40,7 +40,7 @@ namespace Volsbb.Universal.Models
         /// <param name="image">The image Uri.</param>
         /// <param name="targetPage">The target page type.</param>
         public InstructionItem(string headerText, string contentText,
-            Uri image, Type targetPage = null)
+            Uri image, string targetPage = null)
         {
             HeaderText = headerText;
             ContentText = contentText;
@@ -66,6 +66,6 @@ namespace Volsbb.Universal.Models
         /// <summary>
         /// Gets or sets the optional target page.
         /// </summary>
-        public Type TargetPage { get; set; }
+        public string TargetPage { get; set; }
     }
 }

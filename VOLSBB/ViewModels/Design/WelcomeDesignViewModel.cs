@@ -47,7 +47,7 @@ namespace Volsbb.Universal.ViewModels.Design
                 new InstructionItem("Ready?",
                     "That was easy, right? Now you should be ready to upload your first photo.",
                     null,
-                    typeof(VOLSBB.Views.MainPage))
+                    "MainPage")
             };
 
         public InstructionItem SelectedInstructionItem { get; set; }
