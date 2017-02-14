@@ -15,7 +15,7 @@ using Windows.ApplicationModel.VoiceCommands;
 using Microsoft.Services.Store.Engagement;
 using Windows.Foundation.Collections;
 using VOLSBB.Views;
-using Microsoft.HockeyApp;
+
 
 namespace VOLSBB
 {
@@ -30,19 +30,19 @@ namespace VOLSBB
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
 
-            #region Hockeyapp Integration
-            HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
-            HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e")
-          .SetExceptionDescriptionLoader((Exception ex) =>
-         {
-             return "Exception HResult: " + ex.HResult.ToString();
-         });
-            Microsoft.HockeyApp.HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e",
-        new Microsoft.HockeyApp.TelemetryConfiguration()
-        {
-            Collectors = WindowsCollectors.Metadata | WindowsCollectors.Session | WindowsCollectors.UnhandledException
-        }); 
-            #endregion
+        //    #region Hockeyapp Integration
+        //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
+        //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e")
+        //  .SetExceptionDescriptionLoader((Exception ex) =>
+        // {
+        //     return "Exception HResult: " + ex.HResult.ToString();
+        // });
+        //    Microsoft.HockeyApp.HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e",
+        //new Microsoft.HockeyApp.TelemetryConfiguration()
+        //{
+        //    Collectors = WindowsCollectors.Metadata | WindowsCollectors.Session | WindowsCollectors.UnhandledException
+        //}); 
+        //    #endregion
 
             #region app settings
 
@@ -77,9 +77,9 @@ namespace VOLSBB
                 StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"HomeControlCommands.xml");
                 await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
             }
-            catch (Exception ex)
+            catch 
             {
-                System.Diagnostics.Debug.WriteLine("There was an error registering the Voice Command Definitions", ex);
+              //  System.Diagnostics.Debug.WriteLine("There was an error registering the Voice Command Definitions", ex);
             }
             StoreServicesEngagementManager engagementManager = StoreServicesEngagementManager.GetDefault();
             await engagementManager.RegisterNotificationChannelAsync();

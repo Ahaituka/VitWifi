@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="65150bitloks.VitWifi" Publisher="CN=8E5939AC-7500-478F-8DC0-9EAB8C87A9FC" Version="1.1.20.0" />
+  <Identity Name="65150bitloks.VitWifi" Publisher="CN=8E5939AC-7500-478F-8DC0-9EAB8C87A9FC" Version="1.1.21.0" />
   <mp:PhoneIdentity PhoneProductId="732c5310-b3c0-412f-8c1d-6ba55db21047" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Vit 2.4G AutoConnect</DisplayName>
@@ -26,14 +26,13 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#F39C11" />
       </uap:VisualElements>
       <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.ToastBackgroundTask">
+        <uap:Extension Category="windows.appService" EntryPoint="CortanaComponent.HomeControlVoiceCommandService">
+          <uap:AppService Name="VoiceCommandService" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTileTimerTask.BackgroundTask">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-          </BackgroundTasks>
-        </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.ServicingComplete">
-          <BackgroundTasks>
-            <Task Type="systemEvent" />
+            <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.SampleBackgroundTask">
@@ -42,15 +41,16 @@
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTileTimerTask.BackgroundTask">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.ServicingComplete">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-            <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="CortanaComponent.HomeControlVoiceCommandService">
-          <uap:AppService Name="VoiceCommandService" />
-        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.ToastBackgroundTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>

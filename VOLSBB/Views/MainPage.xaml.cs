@@ -161,10 +161,10 @@ namespace VOLSBB.Views
         }
         private async void Logout(object sender, RoutedEventArgs e)
         {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                //return; 
-            }          
+            //foreach (var task in BackgroundTaskRegistration.AllTasks)
+            //{
+            //    //return; 
+            //}          
             bool level = await Pronto.GetNetworkLevelUsingGoogle();
             if (!level)             
             {

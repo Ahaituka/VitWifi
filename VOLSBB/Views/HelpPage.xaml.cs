@@ -65,7 +65,7 @@ namespace VOLSBB.Views
             string alertText = "Get alert when you reach your data plan Limit";
             string tileText = "Automatically updates and  check your usage every 15 minutes.Don't Forget to pin the app's tile on Start!";
             string lockText = "Now Say No ,to Browser Login ";
-            string planText = "Don't know your renewal date.Don't worry we have got you covered !";
+            string planText = "Don't know your renewal date.Don't worry we  got you covered !";
 
             InstructionItems.Add(new InstructionItem("Welcome",
             welcomeText,

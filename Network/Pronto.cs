@@ -271,18 +271,23 @@ namespace Network
 
             }
             NetworkConnectivityLevel _level = await Network.Pronto.GetNetworkLevel();
+            var already = httpResponseBody.Contains("could");
             var exist = httpResponseBody.Contains("account");
             var invalid = httpResponseBody.Contains("again");
             var succes = httpResponseBody.Contains("Congratulations ");
             if (succes)
             {
                 return "Login Succesful";
-
-
+                
             }
+            
             else if (invalid)
             {
                 return "Invalid Credentials";
+            }
+            else if(already)
+            {
+                return "Already LoggedIn";
             }
             else
             {
