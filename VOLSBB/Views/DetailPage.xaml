@@ -74,12 +74,13 @@
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="Data Limit :"
+                        Text="Data Limit  :"
                         TextWrapping="Wrap" />
                     <TextBlock
                         x:Name="dataLimit"
                         Margin="20,0"
-                        FontSize="22" />
+                        FontSize="22"
+                        Text="Not Checked"/>
 
                 </StackPanel>
                 <StackPanel
@@ -89,7 +90,7 @@
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="StartDate :"
+                        Text="StartDate   :"
                         TextWrapping="Wrap" />
                     <TextBlock
                         x:Name="dataStartDate"
@@ -104,7 +105,7 @@
                     <TextBlock
                         FontSize="22"
                         FontWeight="Bold"
-                        Text="EndDate:"
+                        Text="EndDate     :"
                         TextWrapping="Wrap" />
                     <TextBlock
                         x:Name="dataEndDate"

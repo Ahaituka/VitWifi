@@ -279,7 +279,7 @@
                                         Height="50"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
-                                        NavigateUri="https://www.behance.net/mayankbansal">
+                                        NavigateUri="https://www.instagram.com/mbphotographydelhi">
                                         <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
                                     </HyperlinkButton>
                                     <HyperlinkButton
@@ -287,7 +287,7 @@
                                         Height="50"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
-                                        NavigateUri="https://www.instagram.com/mbphotographydelhi">
+                                        NavigateUri="https://www.behance.net/mayankbansal">
                                         <Image Source="ms-appx:///Assets/behance.png" Stretch="Uniform" />
                                     </HyperlinkButton>
 
@@ -329,7 +329,7 @@
                     FontSize="25"
                     TextWrapping="Wrap">
                     <Run>
-                         Vit2.4G AutoConnect is a simple UWP app that will work on any device running windows 10 whether the device is a  PC,phone or tablets.This app is specifically made for the students of VITuniversity to ease the process of having access to  Intenet when connected to Vit's Wifi Network.It automatically passes your credentials to the pronto server.
+                        Vit2.4G AutoConnect is a simple UWP app that will work on any device running windows 10 whether the device is a  PC,phone or tablets.This app is specifically made for the students of VITuniversity to ease the process of having access to  Intenet when connected to Vit's Wifi Network.It automatically passes your credentials to the pronto server.
                     </Run>
 
                     <LineBreak />
