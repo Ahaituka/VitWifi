@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using Template10.Services.NavigationService;
 using Template10.Utils;
 using Windows.UI.Xaml.Media.Animation;
+using Template10.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -111,10 +112,13 @@ namespace VOLSBB.Views
 
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var service = this.Frame.GetNavigationService();
-            await service.NavigateAsync(typeof(Views.MainPage), new SuppressNavigationTransitionInfo());
+            //var service = this.Frame.GetNavigationService();
+            //NavigationService.NavigateAsync(typeof(Views.HelpPage));
+            var nav = WindowWrapper.Current().NavigationServices.FirstOrDefault();
+            nav.Navigate(typeof(Views.MainPage));
+            //await service.NavigateAsync(typeof(Views.MainPage), new SuppressNavigationTransitionInfo());
             Shell.HamburgerMenu.IsFullScreen = false;
         }
     }

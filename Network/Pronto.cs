@@ -627,6 +627,7 @@ namespace Network
             
             try
             {
+                var oneshot = true;
                 var x = await DataUsage();           
                 if (x.errorList.Count == 0)
                 {
@@ -634,9 +635,11 @@ namespace Network
                     var notification = new TileNotification(_tileContent.GetXml());
                     TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
                                  
-                    if(x.usageList[3].Contains("9."))
+                    if(x.usageList[3].Contains("9.") && oneshot)
                     {
+                        
                         Pronto.PopToast("Your Monthly Data Usage have exceded 9 GB");
+                        oneshot = false;
                     } 
                 }
                 else

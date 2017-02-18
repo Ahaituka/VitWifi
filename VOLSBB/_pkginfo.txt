@@ -1,1 +1,1 @@
-C:\Users\mails\Source\Repos\VitWifi\VOLSBB\AppPackages\VOLSBB_1.1.20.0\VOLSBB_1.1.20.0_x86_x64_arm.appxbundle
+C:\Users\mails\Source\Repos\VitWifi\VOLSBB\AppPackages\VOLSBB_1.1.25.0\VOLSBB_1.1.25.0_x86_x64_arm.appxbundle

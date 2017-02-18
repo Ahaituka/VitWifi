@@ -138,7 +138,9 @@ namespace VOLSBB.Views
             else
             {
                 var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-                if (backgroundAccessStatus == BackgroundAccessStatus.Denied) { return; }
+                if (backgroundAccessStatus == BackgroundAccessStatus.DeniedByUser || backgroundAccessStatus == BackgroundAccessStatus.DeniedBySystemPolicy) {
+                    ShowDialog("BackgroundAcess Denied By User or System Please Allow to automate Login");
+                    return; }
                 var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 localSettings.Values["user"] = User.Text;
                 localSettings.Values["pass"] = Pass.Password;
