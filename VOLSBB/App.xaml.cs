@@ -29,20 +29,22 @@ namespace VOLSBB
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+           // string oneshot = localSettings.Values["true"].ToString();
 
-        //    #region Hockeyapp Integration
-        //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
-        //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e")
-        //  .SetExceptionDescriptionLoader((Exception ex) =>
-        // {
-        //     return "Exception HResult: " + ex.HResult.ToString();
-        // });
-        //    Microsoft.HockeyApp.HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e",
-        //new Microsoft.HockeyApp.TelemetryConfiguration()
-        //{
-        //    Collectors = WindowsCollectors.Metadata | WindowsCollectors.Session | WindowsCollectors.UnhandledException
-        //}); 
-        //    #endregion
+            //    #region Hockeyapp Integration
+            //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
+            //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e")
+            //  .SetExceptionDescriptionLoader((Exception ex) =>
+            // {
+            //     return "Exception HResult: " + ex.HResult.ToString();
+            // });
+            //    Microsoft.HockeyApp.HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e",
+            //new Microsoft.HockeyApp.TelemetryConfiguration()
+            //{
+            //    Collectors = WindowsCollectors.Metadata | WindowsCollectors.Session | WindowsCollectors.UnhandledException
+            //}); 
+            //    #endregion
 
             #region app settings
 

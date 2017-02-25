@@ -406,13 +406,13 @@ namespace Network
                     DateTime startDate = DateTime.Parse(planList[1], culture);
                     DateTime endDate = DateTime.Parse(planList[2], culture);
                     DateTime today = DateTime.Today.AddMonths(-1);
-                    var x = startDate.Day.ToString();
+                    var x = startDate.Day.ToString();                   
                     var historyParams = new FormUrlEncodedContent(
                  new KeyValuePair<string, string>[]
                  {
                      new KeyValuePair<string, string>("location", "allLocations"),
                      new KeyValuePair<string, string>("parameter", "custom"),
-                     new KeyValuePair<string, string>("customStartMonth",(today.Month-1
+                     new KeyValuePair<string, string>("customStartMonth",(today.Month
                      ).ToString()),
                      new KeyValuePair<string, string>("customStartDay", x),
                      new KeyValuePair<string, string>("customStartYear", today.Year.ToString()),
@@ -627,19 +627,18 @@ namespace Network
             
             try
             {
-                var oneshot = true;
+                //var oneshot = true;
                 var x = await DataUsage();           
                 if (x.errorList.Count == 0)
                 {
-                    _tileContent = GenerateTileContent(x.usageList[3]);
+                    _tileContent = GenerateTileContent(x.usageList[2]);
                     var notification = new TileNotification(_tileContent.GetXml());
-                    TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
-                                 
-                    if(x.usageList[3].Contains("9.") && oneshot)
+                    TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);                                 
+                    if(x.usageList[2].Contains("9."))
                     {
                         
                         Pronto.PopToast("Your Monthly Data Usage have exceded 9 GB");
-                        oneshot = false;
+                       
                     } 
                 }
                 else
