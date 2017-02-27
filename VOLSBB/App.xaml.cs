@@ -29,8 +29,7 @@ namespace VOLSBB
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-           // string oneshot = localSettings.Values["true"].ToString();
+                       
 
             //    #region Hockeyapp Integration
             //    HockeyClient.Current.Configure("fe89ea0653fd4e2fa99fc385eff8cd0e");
@@ -71,6 +70,7 @@ namespace VOLSBB
             };
         }
 
+
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
            // await Task.Delay(4);
@@ -88,7 +88,7 @@ namespace VOLSBB
 
             // TODO: add your long-running task here
 
-             //await Windows.Storage.ApplicationData.Current.ClearAsync();
+         //    await Windows.Storage.ApplicationData.Current.ClearAsync();
 
             IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
@@ -101,6 +101,8 @@ namespace VOLSBB
                 // The first-time case
                 Shell.HamburgerMenu.IsFullScreen = true;
                 await NavigationService.NavigateAsync(typeof(Views.HelpPage));
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                 localSettings.Values["oneshot"] = "true";
                 roamingProperties["HasBeenHereBefore"] = bool.TrueString; // Doesn't really matter what
             }
 

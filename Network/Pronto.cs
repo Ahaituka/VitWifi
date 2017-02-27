@@ -627,19 +627,25 @@ namespace Network
             
             try
             {
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                string value = localSettings.Values["oneshot"].ToString();
+
+
                 //var oneshot = true;
                 var x = await DataUsage();           
                 if (x.errorList.Count == 0)
                 {
                     _tileContent = GenerateTileContent(x.usageList[2]);
                     var notification = new TileNotification(_tileContent.GetXml());
-                    TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);                                 
-                    if(x.usageList[2].Contains("9."))
-                    {
-                        
+                    TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+                   // x.usageList[2] = "9.5";                             
+                    if(x.usageList[2].Contains("9.") && value=="true")
+                    {                        
                         Pronto.PopToast("Your Monthly Data Usage have exceded 9 GB");
-                       
-                    } 
+                        localSettings.Values["oneshot"] = "false";
+
+
+                    }
                 }
                 else
                 {
