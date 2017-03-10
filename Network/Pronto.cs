@@ -227,7 +227,7 @@ namespace Network
                 pass = localSettings.Values["pass"].ToString();
             }
             catch
-            {
+            {                                    
 
                 return error;
             }
@@ -412,7 +412,7 @@ namespace Network
                  {
                      new KeyValuePair<string, string>("location", "allLocations"),
                      new KeyValuePair<string, string>("parameter", "custom"),
-                     new KeyValuePair<string, string>("customStartMonth",(today.Month
+                     new KeyValuePair<string, string>("customStartMonth",(today.Month-1
                      ).ToString()),
                      new KeyValuePair<string, string>("customStartDay", x),
                      new KeyValuePair<string, string>("customStartYear", today.Year.ToString()),
