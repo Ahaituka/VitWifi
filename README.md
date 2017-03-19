@@ -48,9 +48,8 @@ Images :
   
 Download
 ========
-Note : The app was facing some unexpected bugs for the machines having older builds,I have already fixed the bugs and pushed the update and its in certifiaction process so for the time being i have made the app unavailable till the latest update passes certification.
 
-Download the latest official release [here](https://www.microsoft.com/store/apps/9n59kdvh84br)
+Download the latest official release [here](http://bit.ly/vitwifi)
 
 
 
