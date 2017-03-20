@@ -29,29 +29,29 @@ namespace VOLSBB.ViewModels
             }
         }
 
-        public bool ShowHamburgerButton
-        {
-            get { return _settings.ShowHamburgerButton; }
-            set { _settings.ShowHamburgerButton = value; base.RaisePropertyChanged(); }
-        }
+        //public bool ShowHamburgerButton
+        //{
+        //    get { return _settings.ShowHamburgerButton; }
+        //    set { _settings.ShowHamburgerButton = value; base.RaisePropertyChanged(); }
+        //}
 
-        public bool IsFullScreen
-        {
-            get { return _settings.IsFullScreen; }
-            set
-            {
-                _settings.IsFullScreen = value;
-                base.RaisePropertyChanged();
-                if (value)
-                {
-                    ShowHamburgerButton = false;
-                }
-                else
-                {
-                    ShowHamburgerButton = true;
-                }
-            }
-        }
+        //public bool IsFullScreen
+        //{
+        //    get { return _settings.IsFullScreen; }
+        //    set
+        //    {
+        //        _settings.IsFullScreen = value;
+        //        base.RaisePropertyChanged();
+        //        if (value)
+        //        {
+        //            ShowHamburgerButton = false;
+        //        }
+        //        else
+        //        {
+        //            ShowHamburgerButton = true;
+        //        }
+        //    }
+        //}
 
         public bool UseShellBackButton
         {

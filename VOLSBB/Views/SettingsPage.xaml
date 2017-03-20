@@ -51,7 +51,268 @@
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="pageHeader">
+            <PivotItem
+                Padding="0"
+                DataContext="{Binding SettingsPartViewModel}"
+                Header="Developers">
 
+                <Viewbox HorizontalAlignment="Left">
+                   
+                        <Grid Name="bitloks" Margin="10,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="220" />
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <RelativePanel Grid.Row="0">
+                                <TextBlock
+                                    x:Name="DeveloperTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="App developed by:" />
+                                <StackPanel x:Name="Shubham" RelativePanel.Below="DeveloperTextBlock">
+                                    <TextBlock
+                                        x:Name="shubh"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Shubham Jain" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://bit.ly/shubhgit">
+                                            <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://bit.ly/bitinsta">
+                                            <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://bit.ly/bitsover">
+                                            <Image Source="ms-appx:///Assets/stackoverflow.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://bit.ly/bitlinkd">
+                                            <Image Source="ms-appx:///Assets/linkedin.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://bit.ly/bittumb">
+                                            <Image Source="ms-appx:///Assets/tumblr.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </RelativePanel>
+                            <RelativePanel Grid.Row="1">
+                                <TextBlock
+                                    x:Name="InspiredTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="App inspired by:" />
+
+                                <StackPanel x:Name="Namit" RelativePanel.Below="InspiredTextBlock">
+
+                                    <TextBlock
+                                        x:Name="namit"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Namit Juneja (Bash script) " />
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://github.com/namitjuneja/volsbb-autologin">
+                                            <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="Prince" RelativePanel.Below="Namit">
+
+                                    <TextBlock
+                                        x:Name="prince"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Prince Bansal (Volsbb Onetouch) " />
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://github.com/princebansal/volsbb-onetouch">
+                                            <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </RelativePanel>
+                            <RelativePanel Grid.Row="2">
+                                <TextBlock
+                                    x:Name="MentorTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="Mentor:" />
+
+                                <StackPanel x:Name="Vinay" RelativePanel.Below="MentorTextBlock">
+
+                                    <TextBlock
+                                        x:Name="vinay"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Vinay Gupta " />
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://github.com/VinayGupta23">
+                                            <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </RelativePanel>
+                            <RelativePanel Grid.Row="3">
+                                <TextBlock
+                                    x:Name="DesignerTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="App Logo By:" />
+
+                                <StackPanel x:Name="Mayank" RelativePanel.Below="DesignerTextBlock">
+
+                                    <TextBlock
+                                        x:Name="mayank"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Mayank Bansal " />
+                                    <StackPanel Orientation="Horizontal">
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://www.instagram.com/mbphotographydelhi">
+                                            <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://www.behance.net/mayankbansal">
+                                            <Image Source="ms-appx:///Assets/behance.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </RelativePanel>
+                            <RelativePanel Grid.Row="4">
+                                <TextBlock
+                                    x:Name="FeedBackTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="Feedback:" />
+
+                                <StackPanel
+                                    x:Name="FeedBack"
+                                    Margin="10"
+                                    Orientation="Horizontal"
+                                    RelativePanel.Below="FeedBackTextBlock">
+                                    <Button Click="MailButton">
+                                        <SymbolIcon Symbol="Mail" />
+                                    </Button>
+                                    <Button Margin="10,0,0,0" Click="CallButton">
+                                        <SymbolIcon Symbol="Phone" />
+                                    </Button>
+
+                                </StackPanel>
+
+                            </RelativePanel>
+                            <RelativePanel Grid.Row="5">
+                                <TextBlock
+                                    x:Name="ThanksTextBlock"
+                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                    Text="Special Thanks:" />
+                                <StackPanel x:Name="Bhati" RelativePanel.Below="ThanksTextBlock">
+                                    <TextBlock
+                                        x:Name="divyanshu"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Divyanshu Bhati " />
+                                    <StackPanel Orientation="Horizontal">
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://www.instagram.com/divyanshubh">
+                                            <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="Golu" RelativePanel.Below="Bhati">
+                                    <TextBlock
+                                        x:Name="golu"
+                                        Margin="0,0,0,0"
+                                        FontWeight="Normal"
+                                        Foreground="LightGray"
+                                        Style="{StaticResource SubheaderTextBlockStyle}"
+                                        Text="Gaurav Misra " />
+                                    <StackPanel Orientation="Horizontal">
+                                        <HyperlinkButton
+                                            Width="50"
+                                            Height="50"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            NavigateUri="https://www.instagram.com/gaurvmisra">
+                                            <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
+                                        </HyperlinkButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </RelativePanel>
+                        </Grid>
+                    
+                </Viewbox>
+
+            </PivotItem>
             <!--  settings  -->
             <PivotItem DataContext="{Binding SettingsPartViewModel}" Header="Settings">
                 <ScrollViewer
@@ -77,8 +338,9 @@
                             OnContent="Current theme is Light"
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />-->
+                    
 
-                        <ToggleSwitch
+                        <!--<ToggleSwitch
                             x:Name="ShowHamburgerButtonToggleSwitch"
                             Header="Hamburger Button Visibility"
                             IsEnabled="{Binding IsOn, ElementName=IsFullScreenToggleSwitch, Converter={StaticResource FalseWhenTrueConverter}}"
@@ -86,16 +348,16 @@
                             OffContent="Hamburger Button is hidden"
                             OnContent="Hamburger Button is visible"
                             RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />
+                            RelativePanel.Below="UseShellDrawnBackButtonToggleSwtich" />-->
 
-                        <ToggleSwitch
+                        <!--<ToggleSwitch
                             x:Name="IsFullScreenToggleSwitch"
                             Header="Page content is Full Screen"
                             IsOn="{Binding IsFullScreen, Mode=TwoWay}"
                             OffContent="Hamburger Menu is visible"
                             OnContent="Hamburger Menu is hidden"
                             RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.Below="ShowHamburgerButtonToggleSwitch" />
+                            RelativePanel.Below="ShowHamburgerButtonToggleSwitch" />-->
 
                         <!--<TextBox x:Name="BusyTextTextBox"
                                  Width="200"
@@ -115,211 +377,8 @@
                 </ScrollViewer>
             </PivotItem>
 
-            <!--  privacy  -->
-            <PivotItem
-                Padding="0"
-                DataContext="{Binding SettingsPartViewModel}"
-                Header="Developers">
-                <Viewbox HorizontalAlignment="Left">
-                    <Grid Name="bitloks" Margin="10,0,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="220" />
-                            <RowDefinition Height="120" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <RelativePanel Grid.Row="0">
-                            <TextBlock
-                                x:Name="DeveloperTextBlock"
-                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
-                                Text="App developed by:" />
-                            <StackPanel x:Name="Shubham" RelativePanel.Below="DeveloperTextBlock">
-                                <TextBlock
-                                    x:Name="shubh"
-                                    Margin="0,0,0,0"
-                                    FontWeight="Normal"
-                                    Foreground="LightGray"
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="Shubham Jain" />
-                                <StackPanel Orientation="Horizontal">
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://github.com/bitloks">
-                                        <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://www.instagram.com/bitloks/">
-                                        <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="http://stackoverflow.com/users/5303204/shubham-jain">
-                                        <Image Source="ms-appx:///Assets/stackoverflow.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="http://www.linkedin.com/in/bitloks">
-                                        <Image Source="ms-appx:///Assets/linkedin.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-                                </StackPanel>
-                            </StackPanel>
-                        </RelativePanel>
-                        <RelativePanel Grid.Row="1">
-                            <TextBlock
-                                x:Name="InspiredTextBlock"
-                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
-                                Text="App inspired by:" />
+            <!--  Developers  -->
 
-                            <StackPanel x:Name="Namit" RelativePanel.Below="InspiredTextBlock">
-
-                                <TextBlock
-                                    x:Name="namit"
-                                    Margin="0,0,0,0"
-                                    FontWeight="Normal"
-                                    Foreground="LightGray"
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="Namit Juneja (Bash script) " />
-                                <StackPanel Orientation="Horizontal">
-
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://github.com/namitjuneja/volsbb-autologin">
-                                        <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="Prince" RelativePanel.Below="Namit">
-
-                                <TextBlock
-                                    x:Name="prince"
-                                    Margin="0,0,0,0"
-                                    FontWeight="Normal"
-                                    Foreground="LightGray"
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="Prince Bansal (Volsbb Onetouch) " />
-                                <StackPanel Orientation="Horizontal">
-
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://github.com/princebansal/volsbb-onetouch">
-                                        <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-
-                                </StackPanel>
-                            </StackPanel>
-                        </RelativePanel>
-                        <RelativePanel Grid.Row="2">
-                            <TextBlock
-                                x:Name="MentorTextBlock"
-                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
-                                Text="Mentor:" />
-
-                            <StackPanel x:Name="Vinay" RelativePanel.Below="MentorTextBlock">
-
-                                <TextBlock
-                                    x:Name="vinay"
-                                    Margin="0,0,0,0"
-                                    FontWeight="Normal"
-                                    Foreground="LightGray"
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="Vinay Gupta " />
-                                <StackPanel Orientation="Horizontal">
-
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://github.com/VinayGupta23">
-                                        <Image Source="ms-appx:///Assets/git2.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-
-                                </StackPanel>
-                            </StackPanel>
-                        </RelativePanel>
-                        <RelativePanel Grid.Row="3">
-                            <TextBlock
-                                x:Name="DesignerTextBlock"
-                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
-                                Text="App Logo By:" />
-
-                            <StackPanel x:Name="Mayank" RelativePanel.Below="DesignerTextBlock">
-
-                                <TextBlock
-                                    x:Name="mayank"
-                                    Margin="0,0,0,0"
-                                    FontWeight="Normal"
-                                    Foreground="LightGray"
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="Mayank Bansal " />
-                                <StackPanel Orientation="Horizontal">
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://www.instagram.com/mbphotographydelhi">
-                                        <Image Source="ms-appx:///Assets/instagram.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-                                    <HyperlinkButton
-                                        Width="50"
-                                        Height="50"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        NavigateUri="https://www.behance.net/mayankbansal">
-                                        <Image Source="ms-appx:///Assets/behance.png" Stretch="Uniform" />
-                                    </HyperlinkButton>
-
-
-                                </StackPanel>
-                            </StackPanel>
-                        </RelativePanel>
-                        <RelativePanel Grid.Row="4">
-                            <TextBlock
-                                x:Name="FeedBackTextBlock"
-                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
-                                Text="Feedback:" />
-
-                            <StackPanel
-                                x:Name="FeedBack"
-                                Margin="10"
-                                Orientation="Horizontal"
-                                RelativePanel.Below="FeedBackTextBlock">
-                                <Button Click="MailButton">
-                                    <SymbolIcon Symbol="Mail" />
-                                </Button>
-                                <Button Margin="10,0,0,0" Click="CallButton">
-                                    <SymbolIcon Symbol="Phone" />
-                                </Button>
-
-                            </StackPanel>
-
-                        </RelativePanel>
-                    </Grid>
-                </Viewbox>
-
-            </PivotItem>
 
             <!--  about  -->
             <PivotItem Header="About">
